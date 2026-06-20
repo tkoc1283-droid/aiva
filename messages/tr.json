@@ -1,0 +1,112 @@
+{
+  "Brand": {
+    "name": "Aiva Stüdyo",
+    "tagline": "Yapay Zekâ Destekli Prodüksiyon Stüdyosu"
+  },
+  "Nav": {
+    "home": "Ana Sayfa",
+    "works": "Çalışmalarımız",
+    "services": "Hizmetler",
+    "about": "Hakkımızda",
+    "contact": "İletişim"
+  },
+  "Hero": {
+    "title": "Yaratıcı Vizyon ve Yapay Zekânın Buluştuğu Nokta",
+    "subtitle": "Aiva Stüdyo, moda ve perakende markaları için yeni nesil yapay zekâ destekli görsel ve video prodüksiyonu sunar. Kampanyalarınızı hızlandırın, maliyetleri düşürün.",
+    "cta": "Çalışmaları Keşfet",
+    "ctaContact": "Bizimle Çalışın",
+    "stat1Num": "%80",
+    "stat1Label": "Daha Hızlı Prodüksiyon",
+    "stat2Num": "50+",
+    "stat2Label": "Mutlu Marka",
+    "stat3Num": "10K+",
+    "stat3Label": "Üretilen Görsel & Video"
+  },
+  "SocialProof": {
+    "title": "Güvenen Markalar"
+  },
+  "WorkIndex": {
+    "title": "Sektörel Çalışmalarımız",
+    "subtitle": "Markalar için özelleştirilmiş, yüksek kaliteli yapay zekâ destekli kreatif fotoğraf ve video prodüksiyonlarımız."
+  },
+  "SectorPage": {
+    "videos": "Videolar",
+    "images": "Görseller",
+    "empty": "Bu sektörde henüz sergilenecek çalışma bulunmamaktadır.",
+    "back": "Tüm Çalışmalara Dön",
+    "ctaTitle": "Markanız İçin Prodüksiyon Planlayalım",
+    "ctaDesc": "Koleksiyonlarınızı yapay zekâ destekli modellerle ve kreatif görsellerle hayata geçirmek için bizimle iletişime geçin.",
+    "ctaButton": "WhatsApp ile Görüşelim"
+  },
+  "Services": {
+    "title": "Neler Yapıyoruz?",
+    "subtitle": "Kreatif ve teknolojik çözümlerimizle markanızı dijital dünyada öne çıkarıyoruz.",
+    "stickyTitle": "Hizmet Alanlarımız",
+    "s1Title": "Yapay Zekâ Görsel Üretimi",
+    "s1Desc": "Modellerinizi stüdyo ortamına ihtiyaç duymadan, dilediğiniz arka plan ve konseptte profesyonelce sunuyoruz.",
+    "s2Title": "Kreatif Video Prodüksiyon",
+    "s2Desc": "Sosyal medya, reklam ve e-ticaret siteleri için dinamik, yüksek çözünürlüklü ve hikaye odaklı videolar üretiyoruz.",
+    "s3Title": "Koleksiyon Kampanyaları",
+    "s3Desc": "Sezonluk koleksiyonlarınızı, markanızın estetik diline uygun temalar ve yapay zekâ modelleriyle hızlıca yayına hazırlıyoruz.",
+    "s4Title": "B2B Katalog & E-Ticaret",
+    "s4Desc": "E-ticaret siteleri ve B2B sipariş platformları için yüksek standartlı ve tutarlı ürün katalogları oluşturuyoruz."
+  },
+  "Testimonials": {
+    "title": "Marka Yorumları",
+    "subtitle": "Birlikte çalıştığımız markaların Aiva Stüdyo deneyimleri.",
+    "t1Author": "Merve K. — Moda Tasarımcısı",
+    "t1Text": "Aiva Stüdyo ile çalışmak koleksiyonumuzun hazırlık sürecini inanılmaz kısalttı. Yapay zekâ ile ürettikleri görseller stüdyo çekimlerinden farksızdı.",
+    "t2Author": "Ahmet T. — E-Ticaret Direktörü",
+    "t2Text": "Katalog çekimlerindeki maliyetlerimizi %70 oranında düşürdük. Hız ve kalite gerçekten kusursuz.",
+    "t3Author": "Canan D. — Pazarlama Müdürü",
+    "t3Text": "Sosyal medya kampanyalarımız için hazırladıkları videolar harika dönüşümler getirdi. Çok profesyonel bir ekip."
+  },
+  "Faq": {
+    "title": "Sıkça Sorulan Sorular",
+    "subtitle": "Süreçlerimiz ve yapay zekâ prodüksiyonu hakkında merak edilenler.",
+    "q1": "Yapay zekâ destekli görsel üretimi nasıl çalışır?",
+    "a1": "Ürünlerinizin temel fotoğraflarını alarak, bunları gelişmiş yapay zekâ modellerimiz ve istediğiniz arka plan/konseptlerle birleştirip profesyonel kampanya görsellerine dönüştürüyoruz.",
+    "q2": "Teslimat süreleriniz ne kadardır?",
+    "a2": "Klasik stüdyo çekimlerine kıyasla çok daha hızlıyız. Talebin büyüklüğüne göre genellikle 3 ila 7 iş günü içerisinde tüm teslimatları yapıyoruz.",
+    "q3": "Fiyatlandırma modeliniz nasıl?",
+    "a3": "Proje bazlı veya aylık paketler halinde çalışıyoruz. İhtiyaçlarınıza en uygun teklifi almak için bizimle iletişime geçebilirsiniz."
+  },
+  "FinalCta": {
+    "title": "Kampanyanızı Bugün Başlatın",
+    "subtitle": "Geleneksel prodüksiyon sınırlarını aşın. Koleksiyonunuzu dünya standartlarında görsellerle tanıtın.",
+    "button": "Projenizi Başlatın",
+    "whatsapp": "WhatsApp ile Yazın"
+  },
+  "About": {
+    "title": "Biz Kimiz?",
+    "subtitle": "Geleceğin prodüksiyon teknolojilerini bugünden markanıza sunuyoruz.",
+    "p1": "Aiva Stüdyo, yaratıcılığı yapay zekâ teknolojileriyle birleştiren yeni nesil bir kreatif stüdyodur. Özellikle moda, tekstil ve perakende sektöründeki markalara dijital çağın hızında görsel ve video çözümleri sunuyoruz.",
+    "p2": "Geleneksel stüdyo çekimlerinin getirdiği yüksek bütçe, model bulma zorluğu, mekan kısıtlamaları ve zaman kayıplarını ortadan kaldırıyoruz. Markanızın kimliğine sadık kalarak, hayal ettiğiniz tüm konseptleri gerçeğe dönüştürüyoruz."
+  },
+  "Contact": {
+    "title": "İletişime Geçin",
+    "subtitle": "Kreatif vizyonunuzu konuşalım, markanız için en uygun görsel dünyayı birlikte kurgulayalım.",
+    "formTitle": "Bize Mesaj Gönderin",
+    "name": "Adınız",
+    "email": "E-posta Adresiniz",
+    "phone": "Konu",
+    "message": "Mesajınız",
+    "submit": "Gönder",
+    "sending": "Gönderiliyor...",
+    "success": "Mesajınız başarıyla gönderildi! Sizinle en kısa sürede iletişime geçeceğiz.",
+    "error": "Mesaj gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin veya doğrudan WhatsApp üzerinden bize ulaşın.",
+    "infoTitle": "İletişim Bilgileri",
+    "infoText": "Sorularınız veya iş birlikleri için bize e-posta gönderebilir ya da doğrudan WhatsApp üzerinden ulaşabilirsiniz.",
+    "whatsappInfo": "Hızlı yanıt almak için WhatsApp hattımız üzerinden 7/24 yazabilirsiniz."
+  },
+  "Footer": {
+    "rights": "Tüm Hakları Saklıdır.",
+    "slogan": "Görsel prodüksiyonun yapay zekâ ile yeniden tanımlanması."
+  },
+  "Common": {
+    "explore": "Keşfet",
+    "loading": "Yükleniyor...",
+    "menu": "Menü",
+    "close": "Kapat"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "Brand": {
+    "name": "Aiva Studio",
+    "tagline": "AI-Powered Production Studio"
+  },
+  "Nav": {
+    "home": "Home",
+    "works": "Our Works",
+    "services": "Services",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "title": "Where Creative Vision Meets Artificial Intelligence",
+    "subtitle": "Aiva Studio offers next-generation AI-powered visual and video production for fashion and retail brands. Speed up your campaigns, lower your costs.",
+    "cta": "Explore Works",
+    "ctaContact": "Work with Us",
+    "stat1Num": "80%",
+    "stat1Label": "Faster Production",
+    "stat2Num": "50+",
+    "stat2Label": "Happy Brands",
+    "stat3Num": "10K+",
+    "stat3Label": "Generated Visuals & Videos"
+  },
+  "SocialProof": {
+    "title": "Trusted by Brands"
+  },
+  "WorkIndex": {
+    "title": "Works by Sector",
+    "subtitle": "Our customized, high-quality AI-powered creative photography and video productions for brands."
+  },
+  "SectorPage": {
+    "videos": "Videos",
+    "images": "Images",
+    "empty": "No works displayable in this sector yet.",
+    "back": "Back to All Works",
+    "ctaTitle": "Let's Plan Production for Your Brand",
+    "ctaDesc": "Contact us to bring your collections to life with AI-powered models and creative visuals.",
+    "ctaButton": "Let's Talk on WhatsApp"
+  },
+  "Services": {
+    "title": "What We Do",
+    "subtitle": "We highlight your brand in the digital world with our creative and technological solutions.",
+    "stickyTitle": "Our Service Areas",
+    "s1Title": "AI Visual Generation",
+    "s1Desc": "We professionally present your models in any background and concept without the need for a studio environment.",
+    "s2Title": "Creative Video Production",
+    "s2Desc": "We produce dynamic, high-resolution, and story-driven videos for social media, ads, and e-commerce websites.",
+    "s3Title": "Collection Campaigns",
+    "s3Desc": "We quickly prepare your seasonal collections for launch with themes and AI models matching your brand's aesthetic language.",
+    "s4Title": "B2B Catalogs & E-Commerce",
+    "s4Desc": "We build high-standard and consistent product catalogs for e-commerce sites and B2B ordering platforms."
+  },
+  "Testimonials": {
+    "title": "Client Reviews",
+    "subtitle": "Reviews of brands sharing their experience with Aiva Studio.",
+    "t1Author": "Merve K. — Fashion Designer",
+    "t1Text": "Working with Aiva Studio dramatically shortened our collection prep phase. The visuals they generated with AI were identical to actual studio shoots.",
+    "t2Author": "Ahmet T. — E-Commerce Director",
+    "t2Text": "We cut our catalog shooting costs by 70%. The speed and quality are truly impeccable.",
+    "t3Author": "Canan D. — Marketing Manager",
+    "t3Text": "The videos they produced for our social media campaigns brought great conversion rates. A very professional team."
+  },
+  "Faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Curious things about our workflows and AI production.",
+    "q1": "How does AI-powered visual generation work?",
+    "a1": "Taking basic photos of your products, we merge them with our advanced AI models and your desired background/concept to transform them into professional campaign visuals.",
+    "q2": "What are your delivery times?",
+    "a2": "We are much faster compared to classic studio shoots. Depending on the request scale, we typically deliver all assets within 3 to 7 business days.",
+    "q3": "What is your pricing model?",
+    "a3": "We work on a project basis or monthly packages. You can contact us to get the most suitable offer for your needs."
+  },
+  "FinalCta": {
+    "title": "Launch Your Campaign Today",
+    "subtitle": "Transcend traditional production limits. Promote your collection with world-class visuals.",
+    "button": "Start Your Project",
+    "whatsapp": "Message via WhatsApp"
+  },
+  "About": {
+    "title": "Who We Are",
+    "subtitle": "We bring tomorrow's production technologies to your brand today.",
+    "p1": "Aiva Studio is a next-generation creative studio merging creativity with AI technologies. We provide fast visual and video solutions for brands, especially in the fashion, apparel, and retail sectors.",
+    "p2": "We eliminate high budgets, difficulties in model sourcing, location constraints, and time losses associated with traditional studio shoots. We make all your dreamed concepts real while keeping true to your brand identity."
+  },
+  "Contact": {
+    "title": "Get in Touch",
+    "subtitle": "Let's discuss your creative vision and craft the perfect visual world for your brand together.",
+    "formTitle": "Send Us a Message",
+    "name": "Your Name",
+    "email": "Your Email Address",
+    "phone": "Subject",
+    "message": "Your Message",
+    "submit": "Submit",
+    "sending": "Sending...",
+    "success": "Your message was sent successfully! We will get back to you as soon as possible.",
+    "error": "An error occurred while sending the message. Please try again later or reach us directly via WhatsApp.",
+    "infoTitle": "Contact Information",
+    "infoText": "For questions or collaborations, you can email us or reach us directly through WhatsApp.",
+    "whatsappInfo": "For quick replies, you can message us 24/7 on our WhatsApp line."
+  },
+  "Footer": {
+    "rights": "All Rights Reserved.",
+    "slogan": "Redefining visual production with artificial intelligence."
+  },
+  "Common": {
+    "explore": "Explore",
+    "loading": "Loading...",
+    "menu": "Menu",
+    "close": "Close"
+  }
+}
