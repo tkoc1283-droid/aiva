@@ -97,7 +97,9 @@
     "error": "Mesaj gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin veya doğrudan WhatsApp üzerinden bize ulaşın.",
     "infoTitle": "İletişim Bilgileri",
     "infoText": "Sorularınız veya iş birlikleri için bize e-posta gönderebilir ya da doğrudan WhatsApp üzerinden ulaşabilirsiniz.",
-    "whatsappInfo": "Hızlı yanıt almak için WhatsApp hattımız üzerinden 7/24 yazabilirsiniz."
+    "whatsappInfo": "Mesai saatleri içinde WhatsApp üzerinden ulaşın",
+    "workingHoursTitle": "Çalışma Saatleri",
+    "workingHoursVal": "Hafta içi 09.00 - 18.00"
   },
   "Footer": {
     "rights": "Tüm Hakları Saklıdır.",

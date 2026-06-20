@@ -159,28 +159,27 @@ export default async function HomePage({ params }: PageProps) {
         </div>
 
         <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {[
-            { title: tServices("s1Title"), desc: tServices("s1Desc") },
-            { title: tServices("s2Title"), desc: tServices("s2Desc") },
-            { title: tServices("s3Title"), desc: tServices("s3Desc") },
-            { title: tServices("s4Title"), desc: tServices("s4Desc") }
-          ].map((srv, idx) => (
-            <Reveal key={idx} delay={0.1 * idx}>
-              <div className="bg-cream border border-line rounded-2xl p-8 hover:shadow-kx transition-all duration-300 h-full flex flex-col justify-between space-y-6 group">
-                <div className="space-y-4">
-                  <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-clay/10 text-clay font-mono text-sm font-bold">
-                    0{idx + 1}
+          {(store.services || []).map((srv, idx) => {
+            const title = locale === "tr" ? srv.titleTr : srv.titleEn;
+            const desc = locale === "tr" ? srv.descTr : srv.descEn;
+            return (
+              <Reveal key={srv.id || idx} delay={0.1 * idx}>
+                <div className="bg-cream border border-line rounded-2xl p-8 hover:shadow-kx transition-all duration-300 h-full flex flex-col justify-between space-y-6 group">
+                  <div className="space-y-4">
+                    <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-clay/10 text-clay font-mono text-sm font-bold">
+                      0{idx + 1}
+                    </div>
+                    <h3 className="font-display text-xl font-bold text-ink group-hover:text-clay transition-colors">
+                      {title}
+                    </h3>
+                    <p className="text-sm text-ink-soft leading-relaxed">
+                      {desc}
+                    </p>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-ink group-hover:text-clay transition-colors">
-                    {srv.title}
-                  </h3>
-                  <p className="text-sm text-ink-soft leading-relaxed">
-                    {srv.desc}
-                  </p>
                 </div>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
@@ -291,23 +290,23 @@ export default async function HomePage({ params }: PageProps) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { text: tTestimonials("t1Text"), auth: tTestimonials("t1Author") },
-            { text: tTestimonials("t2Text"), auth: tTestimonials("t2Author") },
-            { text: tTestimonials("t3Text"), auth: tTestimonials("t3Author") }
-          ].map((item, idx) => (
-            <Reveal key={idx} delay={0.1 * idx}>
-              <div className="bg-cream border border-line rounded-2xl p-8 shadow-kx h-full flex flex-col justify-between space-y-6 relative">
-                <span className="absolute -top-5 left-6 text-6xl font-serif text-brass/20 pointer-events-none">“</span>
-                <p className="text-sm text-ink-soft italic leading-relaxed z-10">
-                  {item.text}
-                </p>
-                <div className="border-t border-line/40 pt-4 text-xs font-semibold text-stone uppercase tracking-wider">
-                  {item.auth}
+          {(store.testimonials || []).map((item, idx) => {
+            const text = locale === "tr" ? item.textTr : item.textEn;
+            const auth = locale === "tr" ? item.authorTr : item.authorEn;
+            return (
+              <Reveal key={item.id || idx} delay={0.1 * idx}>
+                <div className="bg-cream border border-line rounded-2xl p-8 shadow-kx h-full flex flex-col justify-between space-y-6 relative">
+                  <span className="absolute -top-5 left-6 text-6xl font-serif text-brass/20 pointer-events-none">“</span>
+                  <p className="text-sm text-ink-soft italic leading-relaxed z-10">
+                    {text}
+                  </p>
+                  <div className="border-t border-line/40 pt-4 text-xs font-semibold text-stone uppercase tracking-wider">
+                    {auth}
+                  </div>
                 </div>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
@@ -325,22 +324,22 @@ export default async function HomePage({ params }: PageProps) {
         </div>
 
         <div className="space-y-6">
-          {[
-            { q: tFaq("q1"), a: tFaq("a1") },
-            { q: tFaq("q2"), a: tFaq("a2") },
-            { q: tFaq("q3"), a: tFaq("a3") }
-          ].map((faq, idx) => (
-            <Reveal key={idx} delay={0.1 * idx}>
-              <div className="bg-cream border border-line rounded-xl p-6 space-y-2">
-                <h4 className="font-display text-lg font-bold text-ink">
-                  {faq.q}
-                </h4>
-                <p className="text-sm text-ink-soft leading-relaxed">
-                  {faq.a}
-                </p>
-              </div>
-            </Reveal>
-          ))}
+          {(store.faqs || []).map((faq, idx) => {
+            const q = locale === "tr" ? faq.questionTr : faq.questionEn;
+            const a = locale === "tr" ? faq.answerTr : faq.answerEn;
+            return (
+              <Reveal key={faq.id || idx} delay={0.1 * idx}>
+                <div className="bg-cream border border-line rounded-xl p-6 space-y-2">
+                  <h4 className="font-display text-lg font-bold text-ink">
+                    {q}
+                  </h4>
+                  <p className="text-sm text-ink-soft leading-relaxed">
+                    {a}
+                  </p>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 

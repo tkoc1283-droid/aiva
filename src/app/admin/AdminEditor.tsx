@@ -502,6 +502,42 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
                 <span className="block text-[10px] font-normal opacity-70">Marka, Logo & Banner</span>
               </button>
 
+              <button
+                onClick={() => setSelectedSlug("services")}
+                className={`w-full text-left px-4 py-3 rounded-xl transition-all text-sm font-semibold border ${
+                  selectedSlug === "services"
+                    ? "bg-ink text-cream border-ink"
+                    : "bg-cream text-ink hover:bg-bone/20 border-transparent"
+                }`}
+              >
+                🛠️ Hizmetler Yönetimi
+                <span className="block text-[10px] font-normal opacity-70">4 Ana Hizmet Kartı</span>
+              </button>
+
+              <button
+                onClick={() => setSelectedSlug("testimonials")}
+                className={`w-full text-left px-4 py-3 rounded-xl transition-all text-sm font-semibold border ${
+                  selectedSlug === "testimonials"
+                    ? "bg-ink text-cream border-ink"
+                    : "bg-cream text-ink hover:bg-bone/20 border-transparent"
+                }`}
+              >
+                💬 Referanslar Yönetimi
+                <span className="block text-[10px] font-normal opacity-70">Müşteri Yorumları CRUD</span>
+              </button>
+
+              <button
+                onClick={() => setSelectedSlug("faqs")}
+                className={`w-full text-left px-4 py-3 rounded-xl transition-all text-sm font-semibold border ${
+                  selectedSlug === "faqs"
+                    ? "bg-ink text-cream border-ink"
+                    : "bg-cream text-ink hover:bg-bone/20 border-transparent"
+                }`}
+              >
+                ❓ SSS Yönetimi
+                <span className="block text-[10px] font-normal opacity-70">Sıkça Sorulan Sorular</span>
+              </button>
+
               <div className="border-t border-line/40 my-1" />
 
               {/* Static base sectors */}
@@ -814,6 +850,441 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
                   <div className="flex items-center justify-center gap-2 text-sm text-clay font-semibold bg-clay/5 border border-clay/10 p-3 rounded-xl">
                     <Loader2 className="h-4 w-4 animate-spin" />
                     Görsel yükleniyor, lütfen bekleyin...
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : selectedSlug === "services" ? (
+            <div className="bg-cream border border-line rounded-2xl p-8 shadow-kx space-y-6 animate-rise text-ink">
+              <div className="border-b border-line pb-6 space-y-4">
+                <span className="eyebrow text-brass">HİZMETLER YÖNETİMİ</span>
+                <h2 className="font-display text-3xl font-bold text-ink">
+                  Hizmet Alanları Düzenleme
+                </h2>
+                <p className="text-sm text-ink-soft">
+                  Ana sayfada sergilenen 4 temel hizmetin başlıklarını ve açıklamalarını Türkçe / İngilizce olarak değiştirebilirsiniz.
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                {(store.services || []).map((srv, idx) => (
+                  <div key={srv.id} className="border border-line/60 bg-bone/20 p-6 rounded-2xl space-y-4">
+                    <div className="flex items-center justify-between border-b border-line pb-2.5">
+                      <h4 className="font-display font-bold text-lg text-ink">Hizmet #{idx + 1}</h4>
+                      <span className="text-xs font-mono text-stone-soft">ID: {srv.id}</span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-semibold text-stone mb-1.5">Başlık (TR)</label>
+                        <input
+                          type="text"
+                          value={srv.titleTr}
+                          onChange={(e) => {
+                            const updated = [...(store.services || [])];
+                            updated[idx] = { ...srv, titleTr: e.target.value };
+                            setStore({ ...store, services: updated });
+                          }}
+                          className="w-full rounded-xl border border-line bg-bone px-3 py-2 text-sm text-ink focus:outline-none"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-semibold text-stone mb-1.5">Başlık (EN)</label>
+                        <input
+                          type="text"
+                          value={srv.titleEn}
+                          onChange={(e) => {
+                            const updated = [...(store.services || [])];
+                            updated[idx] = { ...srv, titleEn: e.target.value };
+                            setStore({ ...store, services: updated });
+                          }}
+                          className="w-full rounded-xl border border-line bg-bone px-3 py-2 text-sm text-ink focus:outline-none"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-semibold text-stone mb-1.5">Açıklama (TR)</label>
+                        <textarea
+                          rows={2}
+                          value={srv.descTr}
+                          onChange={(e) => {
+                            const updated = [...(store.services || [])];
+                            updated[idx] = { ...srv, descTr: e.target.value };
+                            setStore({ ...store, services: updated });
+                          }}
+                          className="w-full rounded-xl border border-line bg-bone px-3 py-2 text-sm text-ink focus:outline-none resize-none"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-semibold text-stone mb-1.5">Açıklama (EN)</label>
+                        <textarea
+                          rows={2}
+                          value={srv.descEn}
+                          onChange={(e) => {
+                            const updated = [...(store.services || [])];
+                            updated[idx] = { ...srv, descEn: e.target.value };
+                            setStore({ ...store, services: updated });
+                          }}
+                          className="w-full rounded-xl border border-line bg-bone px-3 py-2 text-sm text-ink focus:outline-none resize-none"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : selectedSlug === "testimonials" ? (
+            <div className="bg-cream border border-line rounded-2xl p-8 shadow-kx space-y-6 animate-rise text-ink">
+              <div className="border-b border-line pb-6 space-y-4">
+                <span className="eyebrow text-brass">REFERANSLAR YÖNETİMİ</span>
+                <h2 className="font-display text-3xl font-bold text-ink">
+                  Müşteri Yorumları & Referanslar
+                </h2>
+                <p className="text-sm text-ink-soft">
+                  Sitenizde yayınlanan müşteri referanslarını ekleyebilir, güncelleyebilir veya silebilirsiniz.
+                </p>
+              </div>
+
+              {/* Add New Testimonial Form */}
+              <div className="border border-line/60 bg-bone/35 p-6 rounded-2xl space-y-4">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-stone border-b border-line pb-2">Yeni Referans Yorumu Ekle</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-1.5">Müşteri / Yazar Adı (TR)</label>
+                    <input
+                      id="new-testimonial-author-tr"
+                      type="text"
+                      placeholder="Örn. Merve K. — Moda Tasarımcısı"
+                      className="w-full rounded-xl border border-line bg-bone px-3 py-2 text-sm text-ink focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-1.5">Müşteri / Yazar Adı (EN)</label>
+                    <input
+                      id="new-testimonial-author-en"
+                      type="text"
+                      placeholder="Örn. Merve K. — Fashion Designer"
+                      className="w-full rounded-xl border border-line bg-bone px-3 py-2 text-sm text-ink focus:outline-none"
+                    />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-1.5">Yorum Metni (TR)</label>
+                    <textarea
+                      id="new-testimonial-text-tr"
+                      rows={2}
+                      placeholder="Türkçe yorum..."
+                      className="w-full rounded-xl border border-line bg-bone px-3 py-2 text-sm text-ink focus:outline-none resize-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-1.5">Yorum Metni (EN)</label>
+                    <textarea
+                      id="new-testimonial-text-en"
+                      rows={2}
+                      placeholder="English text..."
+                      className="w-full rounded-xl border border-line bg-bone px-3 py-2 text-sm text-ink focus:outline-none resize-none"
+                    />
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const authTrInput = document.getElementById("new-testimonial-author-tr") as HTMLInputElement;
+                    const authEnInput = document.getElementById("new-testimonial-author-en") as HTMLInputElement;
+                    const textTrInput = document.getElementById("new-testimonial-text-tr") as HTMLTextAreaElement;
+                    const textEnInput = document.getElementById("new-testimonial-text-en") as HTMLTextAreaElement;
+                    
+                    if (!authTrInput.value || !textTrInput.value) {
+                      setToast({ message: "Lütfen en azından Türkçe Ad ve Yorum metnini doldurun.", type: "error" });
+                      return;
+                    }
+                    const newItem = {
+                      id: "t-" + Math.random().toString(36).substring(2, 9),
+                      authorTr: authTrInput.value,
+                      authorEn: authEnInput.value || authTrInput.value,
+                      textTr: textTrInput.value,
+                      textEn: textEnInput.value || textTrInput.value,
+                    };
+                    setStore({
+                      ...store,
+                      testimonials: [...(store.testimonials || []), newItem]
+                    });
+                    authTrInput.value = "";
+                    authEnInput.value = "";
+                    textTrInput.value = "";
+                    textEnInput.value = "";
+                    setToast({ message: "Yorum başarıyla listeye eklendi.", type: "success" });
+                  }}
+                  className="rounded-xl bg-ink text-cream px-4 py-2 text-xs font-semibold hover:bg-ink-soft transition-colors flex items-center gap-1.5"
+                >
+                  <Plus className="h-3.5 w-3.5" /> Listeye Ekle
+                </button>
+              </div>
+
+              {/* List of Testimonials */}
+              <div className="space-y-4 pt-4">
+                <h3 className="eyebrow text-stone border-b border-line pb-2">Mevcut Referanslar</h3>
+                {(store.testimonials || []).length === 0 ? (
+                  <p className="text-xs text-stone-soft italic">Henüz hiç referans eklenmemiş.</p>
+                ) : (
+                  <div className="space-y-4">
+                    {(store.testimonials || []).map((item, idx) => (
+                      <div key={item.id} className="border border-line bg-bone/10 p-4 rounded-xl flex flex-col space-y-3 relative group">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const filtered = (store.testimonials || []).filter((t) => t.id !== item.id);
+                            setStore({ ...store, testimonials: filtered });
+                            setToast({ message: "Yorum listeden kaldırıldı.", type: "success" });
+                          }}
+                          className="absolute top-4 right-4 p-2 rounded-lg border border-line bg-cream text-stone hover:text-rose-700 hover:border-rose-300/40 transition-colors"
+                          title="Sil"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                        
+                        <div className="pr-12 space-y-3">
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-[10px] font-semibold text-stone uppercase">Müşteri (TR)</label>
+                              <input
+                                type="text"
+                                value={item.authorTr}
+                                onChange={(e) => {
+                                  const updated = [...(store.testimonials || [])];
+                                  updated[idx] = { ...item, authorTr: e.target.value };
+                                  setStore({ ...store, testimonials: updated });
+                                }}
+                                className="w-full text-xs font-semibold text-ink bg-transparent focus:bg-cream border border-transparent focus:border-line rounded px-2 py-1 focus:outline-none"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-[10px] font-semibold text-stone uppercase">Müşteri (EN)</label>
+                              <input
+                                type="text"
+                                value={item.authorEn}
+                                onChange={(e) => {
+                                  const updated = [...(store.testimonials || [])];
+                                  updated[idx] = { ...item, authorEn: e.target.value };
+                                  setStore({ ...store, testimonials: updated });
+                                }}
+                                className="w-full text-xs font-semibold text-ink bg-transparent focus:bg-cream border border-transparent focus:border-line rounded px-2 py-1 focus:outline-none"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-[10px] font-semibold text-stone uppercase">Yorum (TR)</label>
+                              <textarea
+                                value={item.textTr}
+                                rows={2}
+                                onChange={(e) => {
+                                  const updated = [...(store.testimonials || [])];
+                                  updated[idx] = { ...item, textTr: e.target.value };
+                                  setStore({ ...store, testimonials: updated });
+                                }}
+                                className="w-full text-xs text-ink bg-transparent focus:bg-cream border border-transparent focus:border-line rounded px-2 py-1 focus:outline-none resize-none"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-[10px] font-semibold text-stone uppercase">Yorum (EN)</label>
+                              <textarea
+                                value={item.textEn}
+                                rows={2}
+                                onChange={(e) => {
+                                  const updated = [...(store.testimonials || [])];
+                                  updated[idx] = { ...item, textEn: e.target.value };
+                                  setStore({ ...store, testimonials: updated });
+                                }}
+                                className="w-full text-xs text-ink bg-transparent focus:bg-cream border border-transparent focus:border-line rounded px-2 py-1 focus:outline-none resize-none"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : selectedSlug === "faqs" ? (
+            <div className="bg-cream border border-line rounded-2xl p-8 shadow-kx space-y-6 animate-rise text-ink">
+              <div className="border-b border-line pb-6 space-y-4">
+                <span className="eyebrow text-brass">SSS YÖNETİMİ</span>
+                <h2 className="font-display text-3xl font-bold text-ink">
+                  Sıkça Sorulan Sorular (SSS)
+                </h2>
+                <p className="text-sm text-ink-soft">
+                  Sitenizin SSS sayfa/bölümündeki soru ve cevapları yönetebilirsiniz.
+                </p>
+              </div>
+
+              {/* Add New FAQ Form */}
+              <div className="border border-line/60 bg-bone/35 p-6 rounded-2xl space-y-4">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-stone border-b border-line pb-2">Yeni Soru & Cevap Ekle</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-1.5">Soru (TR)</label>
+                    <input
+                      id="new-faq-question-tr"
+                      type="text"
+                      placeholder="Örn. Teslimat süreleriniz ne kadardır?"
+                      className="w-full rounded-xl border border-line bg-bone px-3 py-2 text-sm text-ink focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-1.5">Soru (EN)</label>
+                    <input
+                      id="new-faq-question-en"
+                      type="text"
+                      placeholder="Örn. What are your delivery times?"
+                      className="w-full rounded-xl border border-line bg-bone px-3 py-2 text-sm text-ink focus:outline-none"
+                    />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-1.5">Cevap (TR)</label>
+                    <textarea
+                      id="new-faq-answer-tr"
+                      rows={2}
+                      placeholder="Cevap metni..."
+                      className="w-full rounded-xl border border-line bg-bone px-3 py-2 text-sm text-ink focus:outline-none resize-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-1.5">Cevap (EN)</label>
+                    <textarea
+                      id="new-faq-answer-en"
+                      rows={2}
+                      placeholder="Answer text..."
+                      className="w-full rounded-xl border border-line bg-bone px-3 py-2 text-sm text-ink focus:outline-none resize-none"
+                    />
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const qTrInput = document.getElementById("new-faq-question-tr") as HTMLInputElement;
+                    const qEnInput = document.getElementById("new-faq-question-en") as HTMLInputElement;
+                    const aTrInput = document.getElementById("new-faq-answer-tr") as HTMLTextAreaElement;
+                    const aEnInput = document.getElementById("new-faq-answer-en") as HTMLTextAreaElement;
+                    
+                    if (!qTrInput.value || !aTrInput.value) {
+                      setToast({ message: "Lütfen en azından Türkçe Soru ve Cevap metnini doldurun.", type: "error" });
+                      return;
+                    }
+                    const newItem = {
+                      id: "faq-" + Math.random().toString(36).substring(2, 9),
+                      questionTr: qTrInput.value,
+                      questionEn: qEnInput.value || qTrInput.value,
+                      answerTr: aTrInput.value,
+                      answerEn: aEnInput.value || aTrInput.value,
+                    };
+                    setStore({
+                      ...store,
+                      faqs: [...(store.faqs || []), newItem]
+                    });
+                    qTrInput.value = "";
+                    qEnInput.value = "";
+                    aTrInput.value = "";
+                    aEnInput.value = "";
+                    setToast({ message: "Soru & Cevap başarıyla listeye eklendi.", type: "success" });
+                  }}
+                  className="rounded-xl bg-ink text-cream px-4 py-2 text-xs font-semibold hover:bg-ink-soft transition-colors flex items-center gap-1.5"
+                >
+                  <Plus className="h-3.5 w-3.5" /> Listeye Ekle
+                </button>
+              </div>
+
+              {/* List of FAQs */}
+              <div className="space-y-4 pt-4">
+                <h3 className="eyebrow text-stone border-b border-line pb-2">Mevcut Soru & Cevaplar</h3>
+                {(store.faqs || []).length === 0 ? (
+                  <p className="text-xs text-stone-soft italic">Henüz hiç soru eklenmemiş.</p>
+                ) : (
+                  <div className="space-y-4">
+                    {(store.faqs || []).map((item, idx) => (
+                      <div key={item.id} className="border border-line bg-bone/10 p-4 rounded-xl flex flex-col space-y-3 relative group">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const filtered = (store.faqs || []).filter((f) => f.id !== item.id);
+                            setStore({ ...store, faqs: filtered });
+                            setToast({ message: "Soru & Cevap listeden kaldırıldı.", type: "success" });
+                          }}
+                          className="absolute top-4 right-4 p-2 rounded-lg border border-line bg-cream text-stone hover:text-rose-700 hover:border-rose-300/40 transition-colors"
+                          title="Sil"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                        
+                        <div className="pr-12 space-y-3">
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-[10px] font-semibold text-stone uppercase">Soru (TR)</label>
+                              <input
+                                type="text"
+                                value={item.questionTr}
+                                onChange={(e) => {
+                                  const updated = [...(store.faqs || [])];
+                                  updated[idx] = { ...item, questionTr: e.target.value };
+                                  setStore({ ...store, faqs: updated });
+                                }}
+                                className="w-full text-xs font-semibold text-ink bg-transparent focus:bg-cream border border-transparent focus:border-line rounded px-2 py-1 focus:outline-none"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-[10px] font-semibold text-stone uppercase">Soru (EN)</label>
+                              <input
+                                type="text"
+                                value={item.questionEn}
+                                onChange={(e) => {
+                                  const updated = [...(store.faqs || [])];
+                                  updated[idx] = { ...item, questionEn: e.target.value };
+                                  setStore({ ...store, faqs: updated });
+                                }}
+                                className="w-full text-xs font-semibold text-ink bg-transparent focus:bg-cream border border-transparent focus:border-line rounded px-2 py-1 focus:outline-none"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-[10px] font-semibold text-stone uppercase">Cevap (TR)</label>
+                              <textarea
+                                value={item.answerTr}
+                                rows={2}
+                                onChange={(e) => {
+                                  const updated = [...(store.faqs || [])];
+                                  updated[idx] = { ...item, answerTr: e.target.value };
+                                  setStore({ ...store, faqs: updated });
+                                }}
+                                className="w-full text-xs text-ink bg-transparent focus:bg-cream border border-transparent focus:border-line rounded px-2 py-1 focus:outline-none resize-none"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-[10px] font-semibold text-stone uppercase">Cevap (EN)</label>
+                              <textarea
+                                value={item.answerEn}
+                                rows={2}
+                                onChange={(e) => {
+                                  const updated = [...(store.faqs || [])];
+                                  updated[idx] = { ...item, answerEn: e.target.value };
+                                  setStore({ ...store, faqs: updated });
+                                }}
+                                className="w-full text-xs text-ink bg-transparent focus:bg-cream border border-transparent focus:border-line rounded px-2 py-1 focus:outline-none resize-none"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>

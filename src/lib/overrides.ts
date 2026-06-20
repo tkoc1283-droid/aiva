@@ -22,6 +22,30 @@ export interface GlobalSettings {
   heroBannerUrl?: string;
 }
 
+export interface ServiceItem {
+  id: string;
+  titleTr: string;
+  titleEn: string;
+  descTr: string;
+  descEn: string;
+}
+
+export interface TestimonialItem {
+  id: string;
+  authorTr: string;
+  authorEn: string;
+  textTr: string;
+  textEn: string;
+}
+
+export interface FaqItem {
+  id: string;
+  questionTr: string;
+  questionEn: string;
+  answerTr: string;
+  answerEn: string;
+}
+
 export interface SectorOverride {
   order: string[];
   hidden: string[];
@@ -41,6 +65,9 @@ export interface Store {
   overrides: Record<string, SectorOverride>;
   custom: CustomSector[];
   settings?: GlobalSettings;
+  services?: ServiceItem[];
+  testimonials?: TestimonialItem[];
+  faqs?: FaqItem[];
 }
 
 const STORE_FILE = path.join(process.cwd(), "src/data/store.json");
@@ -54,13 +81,92 @@ function normalize(store: any): Store {
     brandNameEn: "AIVA",
     brandTaglineTr: "Kreatif Prodüksiyon & Reklam Stüdyosu",
     brandTaglineEn: "Creative Production & Advertising Studio",
-    logoUrl: "",
+    logoUrl: "/logo.jpg",
     heroTitleTr: "Yaratıcı Vizyon ve Estetiğin Zirvesi",
     heroTitleEn: "The Pinnacle of Creative Vision and Aesthetics",
     heroSubtitleTr: "Aiva Stüdyo, yüksek bütçeli moda markaları ve kreatif ajanslar için dünya standartlarında reklam, görsel ve video prodüksiyonu sunar.",
     heroSubtitleEn: "Aiva Studio delivers world-class advertising, visual, and video production for high-end fashion brands and creative agencies.",
     heroBannerUrl: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1600&auto=format&fit=crop",
   };
+
+  const defaultServices: ServiceItem[] = [
+    {
+      id: "s1",
+      titleTr: "Yapay Zekâ Görsel Üretimi",
+      titleEn: "AI Visual Generation",
+      descTr: "Modellerinizi stüdyo ortamına ihtiyaç duymadan, dilediğiniz arka plan ve konseptte profesyonelce sunuyoruz.",
+      descEn: "We professionally present your models in any background and concept without the need for a studio environment."
+    },
+    {
+      id: "s2",
+      titleTr: "Kreatif Video Prodüksiyon",
+      titleEn: "Creative Video Production",
+      descTr: "Sosyal medya, reklam ve e-ticaret siteleri için dinamik, yüksek çözünürlüklü ve hikaye odaklı videolar üretiyoruz.",
+      descEn: "We produce dynamic, high-resolution, and story-driven videos for social media, ads, and e-commerce websites."
+    },
+    {
+      id: "s3",
+      titleTr: "Koleksiyon Kampanyaları",
+      titleEn: "Collection Campaigns",
+      descTr: "Sezonluk koleksiyonlarınızı, markanızın estetik diline uygun temalar ve yapay zekâ modelleriyle hızlıca yayına hazırlıyoruz.",
+      descEn: "We quickly prepare your seasonal collections for launch with themes and AI models matching your brand's aesthetic language."
+    },
+    {
+      id: "s4",
+      titleTr: "B2B Katalog & E-Ticaret",
+      titleEn: "B2B Catalogs & E-Commerce",
+      descTr: "E-ticaret siteleri ve B2B sipariş platformları için yüksek standartlı ve tutarlı ürün katalogları oluşturuyoruz.",
+      descEn: "We build high-standard and consistent product catalogs for e-commerce sites and B2B ordering platforms."
+    }
+  ];
+
+  const defaultTestimonials: TestimonialItem[] = [
+    {
+      id: "t1",
+      authorTr: "Merve K. — Moda Tasarımcısı",
+      authorEn: "Merve K. — Fashion Designer",
+      textTr: "Aiva Stüdyo ile çalışmak koleksiyonumuzun hazırlık sürecini inanılmaz kısalttı. Yapay zekâ ile ürettikleri görseller stüdyo çekimlerinden farksızdı.",
+      textEn: "Working with Aiva Studio dramatically shortened our collection prep phase. The visuals they generated with AI were identical to actual studio shoots."
+    },
+    {
+      id: "t2",
+      authorTr: "Ahmet T. — E-Ticaret Direktörü",
+      authorEn: "Ahmet T. — E-Commerce Director",
+      textTr: "Katalog çekimlerindeki maliyetlerimizi %70 oranında düşürdük. Hız ve kalite gerçekten kusursuz.",
+      textEn: "We cut our catalog shooting costs by 70%. The speed and quality are truly impeccable."
+    },
+    {
+      id: "t3",
+      authorTr: "Canan D. — Pazarlama Müdürü",
+      authorEn: "Canan D. — Marketing Manager",
+      textTr: "Sosyal medya kampanyalarımız için hazırladıkları videolar harika dönüşümler getirdi. Çok profesyonel bir ekip.",
+      textEn: "The videos they produced for our social media campaigns brought great conversion rates. A very professional team."
+    }
+  ];
+
+  const defaultFaqs: FaqItem[] = [
+    {
+      id: "q1",
+      questionTr: "Yapay zekâ destekli görsel üretimi nasıl çalışır?",
+      questionEn: "How does AI-powered visual generation work?",
+      answerTr: "Ürünlerinizin temel fotoğraflarını alarak, bunları gelişmiş yapay zekâ modellerimiz ve istediğiniz arka plan/konseptlerle birleştirip profesyonel kampanya görsellerine dönüştürüyoruz.",
+      answerEn: "Taking basic photos of your products, we merge them with our advanced AI models and your desired background/concept to transform them into professional campaign visuals."
+    },
+    {
+      id: "q2",
+      questionTr: "Teslimat süreleriniz ne kadardır?",
+      questionEn: "What are your delivery times?",
+      answerTr: "Klasik stüdyo çekimlerine kıyasla çok daha hızlıyız. Talebin büyüklüğüne göre genellikle 3 ila 7 iş günü içerisinde tüm teslimatları yapıyoruz.",
+      answerEn: "We are much faster compared to classic studio shoots. Depending on the request scale, we typically deliver all assets within 3 to 7 business days."
+    },
+    {
+      id: "q3",
+      questionTr: "Fiyatlandırma modeliniz nasıl?",
+      questionEn: "What is your pricing model?",
+      answerTr: "Proje bazlı veya aylık paketler halinde çalışıyoruz. İhtiyaçlarınıza en uygun teklifi almak için bizimle iletişime geçebilirsiniz.",
+      answerEn: "We work on a project basis or monthly packages. You can contact us to get the most suitable offer for your needs."
+    }
+  ];
 
   return {
     overrides: store.overrides || {},
@@ -69,6 +175,9 @@ function normalize(store: any): Store {
       ...defaultSettings,
       ...(store.settings || {}),
     },
+    services: store.services || defaultServices,
+    testimonials: store.testimonials || defaultTestimonials,
+    faqs: store.faqs || defaultFaqs,
   };
 }
 

@@ -3,7 +3,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import Reveal from "../../../components/Reveal";
 import ContactForm from "../../../components/ContactForm";
 import { siteConfig } from "../../../config/site";
-import { Mail, MessageSquare } from "lucide-react";
+import { Mail, MessageSquare, Clock } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -90,6 +90,19 @@ export default async function ContactPage({ params }: PageProps) {
                 <a href={siteConfig.whatsapp} target="_blank" rel="noopener noreferrer" className="text-base text-ink font-semibold hover:text-clay hover:underline block">
                   {tContact("whatsappInfo")}
                 </a>
+              </div>
+            </div>
+
+            {/* Working Hours */}
+            <div className="flex items-start gap-4">
+              <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-clay/10 text-clay shrink-0">
+                <Clock className="h-5 w-5" />
+              </div>
+              <div className="space-y-1">
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-stone">{tContact("workingHoursTitle")}</h4>
+                <p className="text-base text-ink font-semibold">
+                  {tContact("workingHoursVal")}
+                </p>
               </div>
             </div>
           </div>

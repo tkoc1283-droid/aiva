@@ -97,7 +97,9 @@
     "error": "An error occurred while sending the message. Please try again later or reach us directly via WhatsApp.",
     "infoTitle": "Contact Information",
     "infoText": "For questions or collaborations, you can email us or reach us directly through WhatsApp.",
-    "whatsappInfo": "For quick replies, you can message us 24/7 on our WhatsApp line."
+    "whatsappInfo": "Reach us via WhatsApp during working hours",
+    "workingHoursTitle": "Working Hours",
+    "workingHoursVal": "Weekdays 09:00 - 18:00"
   },
   "Footer": {
     "rights": "All Rights Reserved.",
