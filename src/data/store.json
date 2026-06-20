@@ -1,4 +1,7 @@
 {
   "overrides": {},
-  "custom": []
+  "custom": [],
+  "settings": {
+    "logoUrl": "/logo.jpg"
+  }
 }
