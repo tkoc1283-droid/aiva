@@ -36,19 +36,61 @@ export default async function HomePage({ params }: PageProps) {
   const heroSubtitle = locale === "tr" ? (settings.heroSubtitleTr || tHero("subtitle")) : (settings.heroSubtitleEn || tHero("subtitle"));
   const heroBannerUrl = settings.heroBannerUrl || "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1600&auto=format&fit=crop";
 
+  const statsList = [
+    {
+      num: settings.stat1Num || "%80",
+      label: locale === "tr" ? (settings.stat1LabelTr || "Daha Hızlı Prodüksiyon") : (settings.stat1LabelEn || "Faster Production")
+    },
+    {
+      num: settings.stat2Num || "50+",
+      label: locale === "tr" ? (settings.stat2LabelTr || "Mutlu Marka") : (settings.stat2LabelEn || "Happy Brands")
+    },
+    {
+      num: settings.stat3Num || "10K+",
+      label: locale === "tr" ? (settings.stat3LabelTr || "Üretilen Görsel & Video") : (settings.stat3LabelEn || "Generated Media")
+    }
+  ];
+
 
 
   // How it works steps
-  const steps = locale === "tr" ? [
-    { num: "01", title: "Ürün Teslimi", desc: "Ürünlerinizin temel fotoğraflarını çekip dijital olarak stüdyomuza gönderin." },
-    { num: "02", title: "Yapay Zekâ Konsepti", desc: "Markanızın estetiğine uygun arka plan, model ve aydınlatma konseptlerini seçelim." },
-    { num: "03", title: "Prodüksiyon & Rötuş", desc: "Gelişmiş AI modellerimiz ile yüksek çözünürlüklü sanatsal görselleri hazırlayalım." },
-    { num: "04", title: "Hızlı Teslimat", desc: "E-ticaret ve sosyal medya kanallarınız için hazır görselleri birkaç günde teslim edelim." }
-  ] : [
-    { num: "01", title: "Product Delivery", desc: "Shoot basic photos of your products and send them digitally to our studio." },
-    { num: "02", title: "AI Concept Design", desc: "We select background, model, and lighting concepts matching your brand aesthetic." },
-    { num: "03", title: "Production & Retouching", desc: "We generate high-resolution artistic visuals using our advanced AI models." },
-    { num: "04", title: "Fast Delivery", desc: "We deliver campaign-ready assets for your channels within a few business days." }
+  const steps = [
+    {
+      num: "01",
+      title: locale === "tr"
+        ? (settings.step1TitleTr || "Ürün Teslimi")
+        : (settings.step1TitleEn || "Product Delivery"),
+      desc: locale === "tr"
+        ? (settings.step1DescTr || "Ürünlerinizin temel fotoğraflarını çekip dijital olarak stüdyomuza gönderin.")
+        : (settings.step1DescEn || "Shoot basic photos of your products and send them digitally to our studio.")
+    },
+    {
+      num: "02",
+      title: locale === "tr"
+        ? (settings.step2TitleTr || "Yapay Zekâ Konsepti")
+        : (settings.step2TitleEn || "AI Concept Design"),
+      desc: locale === "tr"
+        ? (settings.step2DescTr || "Markanızın estetiğine uygun arka plan, model ve aydınlatma konseptlerini seçelim.")
+        : (settings.step2DescEn || "We select background, model, and lighting concepts matching your brand aesthetic.")
+    },
+    {
+      num: "03",
+      title: locale === "tr"
+        ? (settings.step3TitleTr || "Prodüksiyon & Rötuş")
+        : (settings.step3TitleEn || "Production & Retouching"),
+      desc: locale === "tr"
+        ? (settings.step3DescTr || "Gelişmiş AI modellerimiz ile yüksek çözünürlüklü sanatsal görselleri hazırlayalım.")
+        : (settings.step3DescEn || "We generate high-resolution artistic visuals using our advanced AI models.")
+    },
+    {
+      num: "04",
+      title: locale === "tr"
+        ? (settings.step4TitleTr || "Hızlı Teslimat")
+        : (settings.step4TitleEn || "Fast Delivery"),
+      desc: locale === "tr"
+        ? (settings.step4DescTr || "E-ticaret ve sosyal medya kanallarınız için hazır görselleri birkaç günde teslim edelim.")
+        : (settings.step4DescEn || "We deliver campaign-ready assets for your channels within a few business days.")
+    }
   ];
 
   return (
@@ -107,10 +149,10 @@ export default async function HomePage({ params }: PageProps) {
           {/* Secondary stats section - smaller and editorial at the bottom of hero */}
           <Reveal delay={0.4} className="w-full border-t border-cream/20 pt-10">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-              {siteConfig.stats.map((stat, i) => (
+              {statsList.map((stat, i) => (
                 <div key={i} className="flex flex-col space-y-2 border-l border-cream/15 pl-6 first:border-0 first:pl-0">
                   <span className="font-display text-3xl font-light text-cream">{stat.num}</span>
-                  <span className="text-xs uppercase font-mono tracking-widest text-brass">{stat.label[locale as "tr" | "en"]}</span>
+                  <span className="text-xs uppercase font-mono tracking-widest text-brass">{stat.label}</span>
                 </div>
               ))}
             </div>
@@ -167,7 +209,7 @@ export default async function HomePage({ params }: PageProps) {
             </Reveal>
             <Reveal delay={0.2}>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-cream">
-                {locale === "tr" ? "Nasıl Çalışıyoruz?" : "How It Works"}
+                {locale === "tr" ? (settings.howItWorksHeadingTr || "Nasıl Çalışıyoruz?") : (settings.howItWorksHeadingEn || "How It Works")}
               </h2>
             </Reveal>
           </div>
@@ -200,7 +242,7 @@ export default async function HomePage({ params }: PageProps) {
           </Reveal>
           <Reveal delay={0.2}>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-ink">
-              {locale === "tr" ? "Hizmet Verdiğimiz Sektörler" : "Sectors We Serve"}
+              {locale === "tr" ? (settings.sectorsHeadingTr || "Hizmet Verdiğimiz Sektörler") : (settings.sectorsHeadingEn || "Sectors We Serve")}
             </h2>
           </Reveal>
         </div>

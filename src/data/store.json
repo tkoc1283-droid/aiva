@@ -164,7 +164,7 @@
       },
       "sources": {
         "ig-1": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782139692/aiva/ic-giyim/openart-021780594297108d82d61e1341a38f1d55b18f5893f198b96f001_0_1780594362996_71cf04cb-fw36.png",
-        "ig-2": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782139880/aiva/ic-giyim/openart-02178034550555835c9db62ef7a9766eeb1c4efe709aaa9279bae_0_1780345580319_91d50b84-tbcz.png"
+        "ig-2": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782145833/aiva/ic-giyim/openart-02178051561150930d072d337ea6fcc7bbfbe2f0c485be248957b_0_1780515684643_98b37326-7579.png"
       },
       "cover": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782139670/aiva/ic-giyim/cover-openart-0217803444019106362ddeee9049477b0b29b68d55a9ae9db1576_0_1780344453830_6fbe001a-vay6.png"
     }
@@ -180,7 +180,33 @@
     "heroTitleEn": "The Pinnacle of Creative Vision and Aesthetics",
     "heroSubtitleTr": "Aiva Stüdyo, yüksek bütçeli moda markaları ve kreatif ajanslar için dünya standartlarında reklam, görsel ve video prodüksiyonu sunar.",
     "heroSubtitleEn": "Aiva Studio delivers world-class advertising, visual, and video production for high-end fashion brands and creative agencies.",
-    "heroBannerUrl": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782131215/aiva/settings/heroBannerUrl-gorseli_degistirmeden_tekrar_uret_2k_202606221526-82bu.jpg"
+    "heroBannerUrl": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782131215/aiva/settings/heroBannerUrl-gorseli_degistirmeden_tekrar_uret_2k_202606221526-82bu.jpg",
+    "email": "aiva.studyo@gmail.com",
+    "phone": "",
+    "phoneRaw": "",
+    "whatsapp": "https://wa.me/905358282246",
+    "instagram": "https://instagram.com/aiva.studyo",
+    "youtube": "",
+    "howItWorksHeadingTr": "Süreç & Nasıl Çalışıyoruz?",
+    "howItWorksHeadingEn": "How It Works",
+    "sectorsHeadingTr": "Hizmet Verdiğimiz Sektörler",
+    "sectorsHeadingEn": "Sectors We Serve",
+    "step1TitleTr": "Ürün Teslimi",
+    "step1TitleEn": "Product Delivery",
+    "step1DescTr": "Ürünlerinizin temel fotoğraflarını çekip dijital olarak stüdyomuza gönderin.",
+    "step1DescEn": "Shoot basic photos of your products and send them digitally to our studio.",
+    "step2TitleTr": "Yapay Zekâ Konsepti",
+    "step2TitleEn": "AI Concept Design",
+    "step2DescTr": "Markanızın estetiğine uygun arka plan, model ve aydınlatma konseptlerini seçelim.",
+    "step2DescEn": "We select background, model, and lighting concepts matching your brand aesthetic.",
+    "step3TitleTr": "Prodüksiyon & Rötuş",
+    "step3TitleEn": "Production & Retouching",
+    "step3DescTr": "Gelişmiş AI modellerimiz ile yüksek çözünürlüklü sanatsal görselleri hazırlayalım.",
+    "step3DescEn": "We generate high-resolution artistic visuals using our advanced AI models.",
+    "step4TitleTr": "Hızlı Teslimat",
+    "step4TitleEn": "Fast Delivery",
+    "step4DescTr": "E-ticaret ve sosyal medya kanallarınız için hazır görselleri birkaç günde teslim edelim.",
+    "step4DescEn": "We deliver campaign-ready assets for your channels within a few business days."
   },
   "services": [
     {

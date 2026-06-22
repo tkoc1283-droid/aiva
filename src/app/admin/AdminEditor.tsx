@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { logout, persistStore } from "./actions";
-import { Store, AddedMedia, SectorOverride, CustomSector } from "../../lib/overrides";
+import { Store, AddedMedia, SectorOverride, CustomSector, GlobalSettings } from "../../lib/overrides";
 import { baseSectors, Sector } from "../../data/sectors";
 import { Eye, EyeOff, Trash2, ArrowUp, ArrowDown, LogOut, Save, Plus, Film, Image as ImageIcon, Loader2 } from "lucide-react";
 
@@ -998,6 +998,197 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
                       <span className="text-[10px] text-stone-soft block mt-1.5 truncate">{store.settings.heroBannerUrl}</span>
                     </div>
                   )}
+                </div>
+
+                {/* Ana Sayfa Bölüm Başlıkları */}
+                <div className="border-t border-line/40 pt-6 space-y-4">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-stone">Ana Sayfa Bölüm Başlıkları</h3>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-semibold text-stone mb-2">"Nasıl Çalışıyoruz?" Bölüm Başlığı (TR)</label>
+                      <input
+                        type="text"
+                        value={store.settings?.howItWorksHeadingTr || ""}
+                        onChange={(e) => setStore(prev => ({
+                          ...prev,
+                          settings: { ...(prev.settings || {}), howItWorksHeadingTr: e.target.value }
+                        }))}
+                        className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-stone mb-2">"Nasıl Çalışıyoruz?" Bölüm Başlığı (EN)</label>
+                      <input
+                        type="text"
+                        value={store.settings?.howItWorksHeadingEn || ""}
+                        onChange={(e) => setStore(prev => ({
+                          ...prev,
+                          settings: { ...(prev.settings || {}), howItWorksHeadingEn: e.target.value }
+                        }))}
+                        className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-semibold text-stone mb-2">"Hizmet Verdiğimiz Sektörler" Bölüm Başlığı (TR)</label>
+                      <input
+                        type="text"
+                        value={store.settings?.sectorsHeadingTr || ""}
+                        onChange={(e) => setStore(prev => ({
+                          ...prev,
+                          settings: { ...(prev.settings || {}), sectorsHeadingTr: e.target.value }
+                        }))}
+                        className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-stone mb-2">"Hizmet Verdiğimiz Sektörler" Bölüm Başlığı (EN)</label>
+                      <input
+                        type="text"
+                        value={store.settings?.sectorsHeadingEn || ""}
+                        onChange={(e) => setStore(prev => ({
+                          ...prev,
+                          settings: { ...(prev.settings || {}), sectorsHeadingEn: e.target.value }
+                        }))}
+                        className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Nasıl Çalışıyoruz Adımları */}
+                <div className="border-t border-line/40 pt-6 space-y-6">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-stone">Nasıl Çalışıyoruz Adımları</h3>
+                  
+                  {[1, 2, 3, 4].map((stepNum) => {
+                    const titleTrKey = `step${stepNum}TitleTr` as keyof GlobalSettings;
+                    const titleEnKey = `step${stepNum}TitleEn` as keyof GlobalSettings;
+                    const descTrKey = `step${stepNum}DescTr` as keyof GlobalSettings;
+                    const descEnKey = `step${stepNum}DescEn` as keyof GlobalSettings;
+
+                    return (
+                      <div key={stepNum} className="border border-line/60 bg-bone/20 p-5 rounded-xl space-y-4">
+                        <div className="flex items-center justify-between border-b border-line/40 pb-2">
+                          <h4 className="text-xs font-bold text-ink-soft uppercase tracking-wider">Adım 0{stepNum}</h4>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-[11px] font-semibold text-stone mb-1">Başlık (TR)</label>
+                            <input
+                              type="text"
+                              value={(store.settings?.[titleTrKey] as string) || ""}
+                              onChange={(e) => setStore(prev => ({
+                                ...prev,
+                                settings: { ...(prev.settings || {}), [titleTrKey]: e.target.value }
+                              }))}
+                              className="w-full rounded-lg border border-line bg-bone px-3 py-2 text-xs text-ink focus:outline-none focus:border-clay"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[11px] font-semibold text-stone mb-1">Başlık (EN)</label>
+                            <input
+                              type="text"
+                              value={(store.settings?.[titleEnKey] as string) || ""}
+                              onChange={(e) => setStore(prev => ({
+                                ...prev,
+                                settings: { ...(prev.settings || {}), [titleEnKey]: e.target.value }
+                              }))}
+                              className="w-full rounded-lg border border-line bg-bone px-3 py-2 text-xs text-ink focus:outline-none focus:border-clay"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-[11px] font-semibold text-stone mb-1">Açıklama (TR)</label>
+                            <textarea
+                              rows={2}
+                              value={(store.settings?.[descTrKey] as string) || ""}
+                              onChange={(e) => setStore(prev => ({
+                                ...prev,
+                                settings: { ...(prev.settings || {}), [descTrKey]: e.target.value }
+                              }))}
+                              className="w-full rounded-lg border border-line bg-bone px-3 py-2 text-xs text-ink focus:outline-none focus:border-clay resize-none"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[11px] font-semibold text-stone mb-1">Açıklama (EN)</label>
+                            <textarea
+                              rows={2}
+                              value={(store.settings?.[descEnKey] as string) || ""}
+                              onChange={(e) => setStore(prev => ({
+                                ...prev,
+                                settings: { ...(prev.settings || {}), [descEnKey]: e.target.value }
+                              }))}
+                              className="w-full rounded-lg border border-line bg-bone px-3 py-2 text-xs text-ink focus:outline-none focus:border-clay resize-none"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Ana Sayfa İstatistik Sayacı */}
+                <div className="border-t border-line/40 pt-6 space-y-6">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-stone">Ana Sayfa İstatistik Sayacı</h3>
+                  
+                  {[1, 2, 3].map((statNum) => {
+                    const numKey = `stat${statNum}Num` as keyof GlobalSettings;
+                    const labelTrKey = `stat${statNum}LabelTr` as keyof GlobalSettings;
+                    const labelEnKey = `stat${statNum}LabelEn` as keyof GlobalSettings;
+
+                    return (
+                      <div key={statNum} className="border border-line/60 bg-bone/20 p-5 rounded-xl space-y-4">
+                        <div className="flex items-center justify-between border-b border-line/40 pb-2">
+                          <h4 className="text-xs font-bold text-ink-soft uppercase tracking-wider">İstatistik #{statNum}</h4>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                          <div>
+                            <label className="block text-[11px] font-semibold text-stone mb-1">Değer (Örn. %80, 50+, 10K+)</label>
+                            <input
+                              type="text"
+                              value={(store.settings?.[numKey] as string) || ""}
+                              onChange={(e) => setStore(prev => ({
+                                ...prev,
+                                settings: { ...(prev.settings || {}), [numKey]: e.target.value }
+                              }))}
+                              className="w-full rounded-lg border border-line bg-bone px-3 py-2 text-xs text-ink focus:outline-none focus:border-clay"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[11px] font-semibold text-stone mb-1">Etiket (TR)</label>
+                            <input
+                              type="text"
+                              value={(store.settings?.[labelTrKey] as string) || ""}
+                              onChange={(e) => setStore(prev => ({
+                                ...prev,
+                                settings: { ...(prev.settings || {}), [labelTrKey]: e.target.value }
+                              }))}
+                              className="w-full rounded-lg border border-line bg-bone px-3 py-2 text-xs text-ink focus:outline-none focus:border-clay"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[11px] font-semibold text-stone mb-1">Etiket (EN)</label>
+                            <input
+                              type="text"
+                              value={(store.settings?.[labelEnKey] as string) || ""}
+                              onChange={(e) => setStore(prev => ({
+                                ...prev,
+                                settings: { ...(prev.settings || {}), [labelEnKey]: e.target.value }
+                              }))}
+                              className="w-full rounded-lg border border-line bg-bone px-3 py-2 text-xs text-ink focus:outline-none focus:border-clay"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
 
                 {/* Contact & Social Section */}

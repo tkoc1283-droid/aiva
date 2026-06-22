@@ -26,6 +26,35 @@ export interface GlobalSettings {
   whatsapp?: string;
   instagram?: string;
   youtube?: string;
+  howItWorksHeadingTr?: string;
+  howItWorksHeadingEn?: string;
+  sectorsHeadingTr?: string;
+  sectorsHeadingEn?: string;
+  step1TitleTr?: string;
+  step1TitleEn?: string;
+  step1DescTr?: string;
+  step1DescEn?: string;
+  step2TitleTr?: string;
+  step2TitleEn?: string;
+  step2DescTr?: string;
+  step2DescEn?: string;
+  step3TitleTr?: string;
+  step3TitleEn?: string;
+  step3DescTr?: string;
+  step3DescEn?: string;
+  step4TitleTr?: string;
+  step4TitleEn?: string;
+  step4DescTr?: string;
+  step4DescEn?: string;
+  stat1Num?: string;
+  stat1LabelTr?: string;
+  stat1LabelEn?: string;
+  stat2Num?: string;
+  stat2LabelTr?: string;
+  stat2LabelEn?: string;
+  stat3Num?: string;
+  stat3LabelTr?: string;
+  stat3LabelEn?: string;
 }
 
 export interface ServiceItem {
@@ -104,6 +133,35 @@ function normalize(store: any): Store {
     whatsapp: "https://wa.me/905358282246",
     instagram: "https://instagram.com/aivastudyo",
     youtube: "https://youtube.com/@aivastudyo",
+    howItWorksHeadingTr: "Nasıl Çalışıyoruz?",
+    howItWorksHeadingEn: "How It Works",
+    sectorsHeadingTr: "Hizmet Verdiğimiz Sektörler",
+    sectorsHeadingEn: "Sectors We Serve",
+    step1TitleTr: "Ürün Teslimi",
+    step1TitleEn: "Product Delivery",
+    step1DescTr: "Ürünlerinizin temel fotoğraflarını çekip dijital olarak stüdyomuza gönderin.",
+    step1DescEn: "Shoot basic photos of your products and send them digitally to our studio.",
+    step2TitleTr: "Yapay Zekâ Konsepti",
+    step2TitleEn: "AI Concept Design",
+    step2DescTr: "Markanızın estetiğine uygun arka plan, model ve aydınlatma konseptlerini seçelim.",
+    step2DescEn: "We select background, model, and lighting concepts matching your brand aesthetic.",
+    step3TitleTr: "Prodüksiyon & Rötuş",
+    step3TitleEn: "Production & Retouching",
+    step3DescTr: "Gelişmiş AI modellerimiz ile yüksek çözünürlüklü sanatsal görselleri hazırlayalım.",
+    step3DescEn: "We generate high-resolution artistic visuals using our advanced AI models.",
+    step4TitleTr: "Hızlı Teslimat",
+    step4TitleEn: "Fast Delivery",
+    step4DescTr: "E-ticaret ve sosyal medya kanallarınız için hazır görselleri birkaç günde teslim edelim.",
+    step4DescEn: "We deliver campaign-ready assets for your channels within a few business days.",
+    stat1Num: "%80",
+    stat1LabelTr: "Daha Hızlı Prodüksiyon",
+    stat1LabelEn: "Faster Production",
+    stat2Num: "50+",
+    stat2LabelTr: "Mutlu Marka",
+    stat2LabelEn: "Happy Brands",
+    stat3Num: "10K+",
+    stat3LabelTr: "Üretilen Görsel & Video",
+    stat3LabelEn: "Generated Media"
   };
 
   const defaultServices: ServiceItem[] = [
