@@ -72,7 +72,8 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
       });
 
       if (!signRes.ok) {
-        throw new Error("Bulut imzalama servisi başarısız.");
+        const errorData = await signRes.json().catch(() => ({}));
+        throw new Error(errorData.error || "Bulut imzalama servisi başarısız.");
       }
 
       const { timestamp, signature, apiKey, cloudName } = await signRes.json();
@@ -124,10 +125,11 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
     if (activeBaseSector) {
       mediaList = activeBaseSector.media.map((m) => {
         const customTitle = store.overrides[selectedSlug]?.titles?.[m.id];
+        const customSrc = store.overrides[selectedSlug]?.sources?.[m.id];
         return {
           id: m.id,
           type: m.type,
-          src: m.src,
+          src: customSrc || m.src,
           ratio: m.ratio,
           title: customTitle || m.title?.tr || m.title?.en || "",
           isBase: true,
@@ -190,7 +192,8 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
       });
 
       if (!signRes.ok) {
-        throw new Error("Bulut imzalama servisi başarısız.");
+        const errorData = await signRes.json().catch(() => ({}));
+        throw new Error(errorData.error || "Bulut imzalama servisi başarısız.");
       }
 
       const { timestamp, signature, apiKey, cloudName } = await signRes.json();
@@ -278,13 +281,164 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
     }
   };
 
-  // Change custom sector metadata inline
-  const handleCustomSectorMetaChange = (field: "name" | "tagline", val: string) => {
-    if (!activeCustomSector) return;
-    const updatedCustom = store.custom.map((cs) =>
-      cs.slug === selectedSlug ? { ...cs, [field]: val } : cs
-    );
-    setStore((prev) => ({ ...prev, custom: updatedCustom }));
+  // Modify image/video source URL inline
+  const handleSourceChange = (id: string, newSrc: string) => {
+    const override = store.overrides[selectedSlug] || { order: [], hidden: [], added: [], titles: {}, sources: {} };
+    
+    // Check if it is a dynamically added item or a base item
+    const isAddedItem = override.added?.some((m) => m.id === id);
+
+    if (isAddedItem) {
+      const updatedAdded = override.added?.map((m) => (m.id === id ? { ...m, src: newSrc } : m)) || [];
+      setStore((prev) => ({
+        ...prev,
+        overrides: {
+          ...prev.overrides,
+          [selectedSlug]: { ...override, added: updatedAdded },
+        },
+      }));
+    } else {
+      const updatedSources = { ...(override.sources || {}), [id]: newSrc };
+      setStore((prev) => ({
+        ...prev,
+        overrides: {
+          ...prev.overrides,
+          [selectedSlug]: { ...override, sources: updatedSources },
+        },
+      }));
+    }
+  };
+
+  // Upload new file to Cloudinary and replace existing item source
+  const handleReplaceMediaFile = async (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    try {
+      const folderSlug = selectedSlug;
+      const fileBaseName = file.name.substring(0, file.name.lastIndexOf(".")) || file.name;
+      const cleanSlug = slugify(fileBaseName) + "-" + Math.random().toString(36).substring(2, 6);
+      const publicId = `aiva/${folderSlug}/${cleanSlug}`;
+
+      // Call API to sign
+      const signRes = await fetch("/api/admin/sign", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ publicId }),
+      });
+
+      if (!signRes.ok) {
+        const errorData = await signRes.json().catch(() => ({}));
+        throw new Error(errorData.error || "Bulut imzalama servisi başarısız.");
+      }
+
+      const { timestamp, signature, apiKey, cloudName } = await signRes.json();
+
+      // Direct upload
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("api_key", apiKey);
+      formData.append("timestamp", timestamp.toString());
+      formData.append("signature", signature);
+      formData.append("public_id", publicId);
+
+      const uploadRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!uploadRes.ok) {
+        throw new Error("Görsel buluta yüklenemedi.");
+      }
+
+      const uploadData = await uploadRes.json();
+      const mediaUrl = uploadData.secure_url;
+
+      handleSourceChange(id, mediaUrl);
+      setToast({ message: "Görsel başarıyla değiştirildi.", type: "success" });
+    } catch (err: any) {
+      setToast({ message: err.message || "Yükleme hatası.", type: "error" });
+    } finally {
+      setIsUploading(false);
+      e.target.value = ""; // reset file input
+    }
+  };
+
+  // Change sector metadata (name, tagline, cover, accent) for both base & custom sectors
+  const handleSectorMetaChange = (field: "name" | "tagline" | "cover" | "accent", val: string) => {
+    if (activeCustomSector) {
+      const updatedCustom = store.custom.map((cs) =>
+        cs.slug === selectedSlug ? { ...cs, [field]: val } : cs
+      );
+      setStore((prev) => ({ ...prev, custom: updatedCustom }));
+    } else if (activeBaseSector) {
+      const override = store.overrides[selectedSlug] || { order: [], hidden: [], added: [], titles: {}, sources: {} };
+      setStore((prev) => ({
+        ...prev,
+        overrides: {
+          ...prev.overrides,
+          [selectedSlug]: {
+            ...override,
+            [field]: val,
+          },
+        },
+      }));
+    }
+  };
+
+  // Upload cover image to Cloudinary and set it as sector cover
+  const handleUploadCoverFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    try {
+      const folderSlug = selectedSlug;
+      const fileBaseName = file.name.substring(0, file.name.lastIndexOf(".")) || file.name;
+      const cleanSlug = slugify(fileBaseName) + "-" + Math.random().toString(36).substring(2, 6);
+      const publicId = `aiva/${folderSlug}/cover-${cleanSlug}`;
+
+      const signRes = await fetch("/api/admin/sign", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ publicId }),
+      });
+
+      if (!signRes.ok) {
+        const errorData = await signRes.json().catch(() => ({}));
+        throw new Error(errorData.error || "Bulut imzalama servisi başarısız.");
+      }
+
+      const { timestamp, signature, apiKey, cloudName } = await signRes.json();
+
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("api_key", apiKey);
+      formData.append("timestamp", timestamp.toString());
+      formData.append("signature", signature);
+      formData.append("public_id", publicId);
+
+      const uploadRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!uploadRes.ok) {
+        throw new Error("Kapak görseli buluta yüklenemedi.");
+      }
+
+      const uploadData = await uploadRes.json();
+      const mediaUrl = uploadData.secure_url;
+
+      handleSectorMetaChange("cover", mediaUrl);
+      setToast({ message: "Kapak görseli başarıyla güncellendi.", type: "success" });
+    } catch (err: any) {
+      setToast({ message: err.message || "Yükleme hatası.", type: "error" });
+    } finally {
+      setIsUploading(false);
+      e.target.value = "";
+    }
   };
 
   // Toggle hide / show visibility status
@@ -846,6 +1000,98 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
                   )}
                 </div>
 
+                {/* Contact & Social Section */}
+                <div className="border-t border-line/40 pt-6 space-y-4">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-stone">İletişim & Sosyal Medya Ayarları</h3>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-semibold text-stone mb-2">E-posta Adresi</label>
+                      <input
+                        type="email"
+                        value={store.settings?.email || ""}
+                        onChange={(e) => setStore(prev => ({
+                          ...prev,
+                          settings: { ...(prev.settings || {}), email: e.target.value }
+                        }))}
+                        className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                        placeholder="info@aivastudyo.com"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-stone mb-2">WhatsApp Linki</label>
+                      <input
+                        type="text"
+                        value={store.settings?.whatsapp || ""}
+                        onChange={(e) => setStore(prev => ({
+                          ...prev,
+                          settings: { ...(prev.settings || {}), whatsapp: e.target.value }
+                        }))}
+                        className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                        placeholder="https://wa.me/905358282246"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-semibold text-stone mb-2">Telefon (Görünen)</label>
+                      <input
+                        type="text"
+                        value={store.settings?.phone || ""}
+                        onChange={(e) => setStore(prev => ({
+                          ...prev,
+                          settings: { ...(prev.settings || {}), phone: e.target.value }
+                        }))}
+                        className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                        placeholder="Boş bırakabilirsiniz veya örn. +90 (535) 828 22 46"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-stone mb-2">Telefon (Ham / Arama İçin)</label>
+                      <input
+                        type="text"
+                        value={store.settings?.phoneRaw || ""}
+                        onChange={(e) => setStore(prev => ({
+                          ...prev,
+                          settings: { ...(prev.settings || {}), phoneRaw: e.target.value }
+                        }))}
+                        className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                        placeholder="+905358282246"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-semibold text-stone mb-2">Instagram Linki</label>
+                      <input
+                        type="text"
+                        value={store.settings?.instagram || ""}
+                        onChange={(e) => setStore(prev => ({
+                          ...prev,
+                          settings: { ...(prev.settings || {}), instagram: e.target.value }
+                        }))}
+                        className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                        placeholder="https://instagram.com/aivastudyo"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-stone mb-2">YouTube Linki</label>
+                      <input
+                        type="text"
+                        value={store.settings?.youtube || ""}
+                        onChange={(e) => setStore(prev => ({
+                          ...prev,
+                          settings: { ...(prev.settings || {}), youtube: e.target.value }
+                        }))}
+                        className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                        placeholder="https://youtube.com/@aivastudyo"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 {isUploading && (
                   <div className="flex items-center justify-center gap-2 text-sm text-clay font-semibold bg-clay/5 border border-clay/10 p-3 rounded-xl">
                     <Loader2 className="h-4 w-4 animate-spin" />
@@ -1295,39 +1541,93 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
               <div className="border-b border-line pb-6 space-y-4">
                 <span className="eyebrow text-brass">DÜZENLENEN SEKTÖR</span>
                 
-                {activeCustomSector ? (
-                  // Editable metadata for custom sector
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-stone mb-1.5">Sektör İsmi</label>
-                      <input
-                        type="text"
-                        value={activeCustomSector.name}
-                        onChange={(e) => handleCustomSectorMetaChange("name", e.target.value)}
-                        className="text-2xl font-display font-bold text-ink bg-bone border border-line rounded-xl px-3 py-1.5 w-full focus:outline-none focus:border-clay"
-                      />
+                {(() => {
+                  const currentSectorName = activeCustomSector
+                    ? activeCustomSector.name
+                    : (store.overrides[selectedSlug]?.name || activeBaseSector?.name.tr || "");
+
+                  const currentSectorTagline = activeCustomSector
+                    ? activeCustomSector.tagline
+                    : (store.overrides[selectedSlug]?.tagline || activeBaseSector?.tagline.tr || "");
+
+                  const currentSectorCover = activeCustomSector
+                    ? activeCustomSector.cover
+                    : (store.overrides[selectedSlug]?.cover || activeBaseSector?.cover || "");
+
+                  const currentSectorAccent = activeCustomSector
+                    ? activeCustomSector.accent
+                    : (store.overrides[selectedSlug]?.accent || activeBaseSector?.accent || "#78523b");
+
+                  return (
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs font-semibold text-stone mb-1.5">Sektör İsmi</label>
+                          <input
+                            type="text"
+                            value={currentSectorName}
+                            onChange={(e) => handleSectorMetaChange("name", e.target.value)}
+                            className="text-lg font-display font-bold text-ink bg-bone border border-line rounded-xl px-3 py-2 w-full focus:outline-none focus:border-clay"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-semibold text-stone mb-1.5">Slogan / Açıklama</label>
+                          <input
+                            type="text"
+                            value={currentSectorTagline}
+                            onChange={(e) => handleSectorMetaChange("tagline", e.target.value)}
+                            className="text-sm text-ink bg-bone border border-line rounded-xl px-3 py-2 w-full focus:outline-none focus:border-clay"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-end">
+                        <div className="sm:col-span-8">
+                          <label className="block text-xs font-semibold text-stone mb-1.5">Sektör Kapak Görseli URL</label>
+                          <input
+                            type="text"
+                            value={currentSectorCover}
+                            onChange={(e) => handleSectorMetaChange("cover", e.target.value)}
+                            className="text-xs text-ink bg-bone border border-line rounded-xl px-3 py-2 w-full focus:outline-none focus:border-clay"
+                          />
+                        </div>
+                        <div className="sm:col-span-2">
+                          <label className="flex flex-col items-center justify-center border border-dashed border-line bg-bone/35 hover:bg-bone/70 rounded-xl p-2 cursor-pointer transition-colors text-center">
+                            <ImageIcon className="h-4 w-4 text-stone" />
+                            <span className="text-[10px] font-semibold text-ink mt-1">Kapak Yükle</span>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={handleUploadCoverFile}
+                              disabled={isUploading}
+                              className="hidden"
+                            />
+                          </label>
+                        </div>
+                        <div className="sm:col-span-2">
+                          <label className="block text-xs font-semibold text-stone mb-1.5">Vurgu Rengi</label>
+                          <div className="flex items-center gap-1">
+                            <input
+                              type="color"
+                              value={currentSectorAccent}
+                              onChange={(e) => handleSectorMetaChange("accent", e.target.value)}
+                              className="h-8 w-8 rounded border border-line cursor-pointer p-0.5 bg-bone"
+                            />
+                            <span className="text-[10px] uppercase font-mono text-stone">{currentSectorAccent}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {currentSectorCover && (
+                        <div className="mt-2 bg-bone/30 border border-line p-3 rounded-xl max-w-sm flex items-center gap-3">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={currentSectorCover} alt="Cover Preview" className="h-12 w-20 object-cover rounded border border-line" />
+                          <span className="text-[10px] text-stone-soft truncate">{currentSectorCover}</span>
+                        </div>
+                      )}
                     </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-stone mb-1.5">Tagline / Açıklama</label>
-                      <input
-                        type="text"
-                        value={activeCustomSector.tagline}
-                        onChange={(e) => handleCustomSectorMetaChange("tagline", e.target.value)}
-                        className="text-sm text-ink-soft bg-bone border border-line rounded-xl px-3 py-1.5 w-full focus:outline-none focus:border-clay"
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  // Static metadata for base sector
-                  <div>
-                    <h2 className="font-display text-3xl font-bold text-ink">
-                      {activeBaseSector?.name.tr}
-                    </h2>
-                    <p className="text-sm text-ink-soft mt-1.5">
-                      {activeBaseSector?.tagline.tr}
-                    </p>
-                  </div>
-                )}
+                  );
+                })()}
               </div>
 
               {/* Media Upload CTAs */}
@@ -1415,15 +1715,37 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
                               </div>
                             </div>
 
-                            <div className="flex-grow min-w-0">
-                              <input
-                                type="text"
-                                value={m.title}
-                                onChange={(e) => handleTitleChange(m.id, e.target.value)}
-                                className="text-sm font-semibold text-ink bg-transparent focus:bg-cream border border-transparent focus:border-line rounded px-2 py-1 w-full focus:outline-none"
-                                placeholder="Medya Başlığı"
-                              />
-                              <span className="block text-[10px] text-stone-soft truncate pl-2 mt-0.5">{m.src}</span>
+                            <div className="flex-grow min-w-0 space-y-1">
+                              <div className="flex flex-col gap-1">
+                                <label className="text-[9px] font-bold uppercase tracking-wider text-stone/80">Video Başlığı</label>
+                                <input
+                                  type="text"
+                                  value={m.title}
+                                  onChange={(e) => handleTitleChange(m.id, e.target.value)}
+                                  className="text-sm font-semibold text-ink bg-bone border border-line rounded-xl px-3 py-1.5 w-full focus:bg-cream focus:border-clay focus:outline-none transition-all"
+                                  placeholder="Video Başlığı"
+                                />
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <input
+                                  type="text"
+                                  value={m.src}
+                                  onChange={(e) => handleSourceChange(m.id, e.target.value)}
+                                  className="text-[10px] text-stone-soft bg-transparent focus:bg-cream border border-transparent focus:border-line rounded px-2 py-0.5 w-full focus:outline-none"
+                                  placeholder="Dosya URL'si"
+                                />
+                                <label className="shrink-0 flex items-center gap-1 border border-line bg-cream hover:bg-bone px-2 py-0.5 rounded cursor-pointer text-[9px] font-semibold text-stone hover:text-ink">
+                                  <Plus className="h-2.5 w-2.5" />
+                                  Değiştir
+                                  <input
+                                    type="file"
+                                    accept="video/*"
+                                    onChange={(e) => handleReplaceMediaFile(e, m.id)}
+                                    disabled={isUploading}
+                                    className="hidden"
+                                  />
+                                </label>
+                              </div>
                             </div>
                           </div>
 
@@ -1510,15 +1832,37 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
                               />
                             </div>
 
-                            <div className="flex-grow min-w-0">
-                              <input
-                                type="text"
-                                value={m.title}
-                                onChange={(e) => handleTitleChange(m.id, e.target.value)}
-                                className="text-sm font-semibold text-ink bg-transparent focus:bg-cream border border-transparent focus:border-line rounded px-2 py-1 w-full focus:outline-none"
-                                placeholder="Medya Başlığı"
-                              />
-                              <span className="block text-[10px] text-stone-soft truncate pl-2 mt-0.5">{m.src}</span>
+                            <div className="flex-grow min-w-0 space-y-1">
+                              <div className="flex flex-col gap-1">
+                                <label className="text-[9px] font-bold uppercase tracking-wider text-stone/80">Görsel Başlığı</label>
+                                <input
+                                  type="text"
+                                  value={m.title}
+                                  onChange={(e) => handleTitleChange(m.id, e.target.value)}
+                                  className="text-sm font-semibold text-ink bg-bone border border-line rounded-xl px-3 py-1.5 w-full focus:bg-cream focus:border-clay focus:outline-none transition-all"
+                                  placeholder="Görsel Başlığı"
+                                />
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <input
+                                  type="text"
+                                  value={m.src}
+                                  onChange={(e) => handleSourceChange(m.id, e.target.value)}
+                                  className="text-[10px] text-stone-soft bg-transparent focus:bg-cream border border-transparent focus:border-line rounded px-2 py-0.5 w-full focus:outline-none"
+                                  placeholder="Dosya URL'si"
+                                />
+                                <label className="shrink-0 flex items-center gap-1 border border-line bg-cream hover:bg-bone px-2 py-0.5 rounded cursor-pointer text-[9px] font-semibold text-stone hover:text-ink">
+                                  <Plus className="h-2.5 w-2.5" />
+                                  Değiştir
+                                  <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={(e) => handleReplaceMediaFile(e, m.id)}
+                                    disabled={isUploading}
+                                    className="hidden"
+                                  />
+                                </label>
+                              </div>
                             </div>
                           </div>
 

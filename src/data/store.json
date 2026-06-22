@@ -1,7 +1,261 @@
 {
-  "overrides": {},
+  "overrides": {
+    "gelinlik-abiye": {
+      "order": [
+        "added-8ak2fvo",
+        "added-21mngia",
+        "added-97nw1cn",
+        "added-r6qag28"
+      ],
+      "hidden": [],
+      "added": [
+        {
+          "id": "added-8ak2fvo",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782132957/aiva/gelinlik-abiye/editorial_fashion_catalog_photography_a_202606192346-lozw.jpg",
+          "ratio": "3:4",
+          "title": "Aşkın Zarif Yansıması"
+        },
+        {
+          "id": "added-21mngia",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782133481/aiva/gelinlik-abiye/_a_professional_medium-shot_fashion_photograph_202606221602-dhgg.jpg",
+          "ratio": "3:4",
+          "title": "Beyazın En Güzel Hali"
+        },
+        {
+          "id": "added-97nw1cn",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782134803/aiva/gelinlik-abiye/side_profile_three-quarter_view_of_202606192354-r5z4.jpg",
+          "ratio": "3:4",
+          "title": " Şıklığın Yeni Yorumu"
+        },
+        {
+          "id": "added-r6qag28",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782134854/aiva/gelinlik-abiye/bu_kadin_referans_gorseldeki_arka_202606192334-yszi.jpg",
+          "ratio": "3:4",
+          "title": "Gecenin İmzası"
+        }
+      ],
+      "titles": {
+        "ga-2": " Düşlerin İçinden ",
+        "ga-1": " Masalsı Bir Dokunuş"
+      },
+      "cover": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782132914/aiva/gelinlik-abiye/cover-transfer_the_exact_wedding_dress_202606192340-a14t.jpg",
+      "sources": {
+        "ga-1": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782132991/aiva/gelinlik-abiye/a_beautiful_young_woman_with_202606192357-n17u.jpg",
+        "ga-2": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782133458/aiva/gelinlik-abiye/_a_professional_full-body_fashion_photograph_202606221601-ekb0.jpg"
+      }
+    },
+    "taki-aksesuar": {
+      "order": [
+        "added-u7d4u8r"
+      ],
+      "hidden": [],
+      "added": [
+        {
+          "id": "added-u7d4u8r",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782137708/aiva/taki-aksesuar/luxury_jewelry_campaign_shot_featuring_202606192335-94i5.jpg",
+          "ratio": "3:4",
+          "title": "Bileğinizde Taşınan Zarafet"
+        }
+      ],
+      "titles": {
+        "ta-1": " Göz Alıcı Bir Dokunuş",
+        "ta-2": " Bir Hikayenin Başlangıcı"
+      },
+      "sources": {
+        "ta-1": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782134536/aiva/taki-aksesuar/a_luxury_close-up_jewelry_campaign_202606192335-940h.jpg",
+        "ta-2": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782134546/aiva/taki-aksesuar/kadin_soft_pastel_tonlarinda_bir_202606221621-klig.jpg"
+      },
+      "cover": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782134574/aiva/taki-aksesuar/cover-a_luxury_mangalsutra_campaign_featuring_202606192335-of6k.jpg"
+    },
+    "cocuk-giyim": {
+      "order": [
+        "added-8r1uc4b",
+        "added-1e6c1b6",
+        "added-ywihq29",
+        "added-w10pzao",
+        "added-jzbfvjp"
+      ],
+      "hidden": [],
+      "added": [
+        {
+          "id": "added-8r1uc4b",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782139024/aiva/cocuk-giyim/candid_snapshot_real_baby_photo_202606192351-1-8uhi.jpg",
+          "ratio": "3:4",
+          "title": "Çocukluğun En Güzel Hali"
+        },
+        {
+          "id": "added-1e6c1b6",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782139086/aiva/cocuk-giyim/tugba_soz_asla_ve_kata_202606192332-td92.jpg",
+          "ratio": "3:4",
+          "title": "Masumiyetin Zarafeti"
+        },
+        {
+          "id": "added-ywihq29",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782139140/aiva/cocuk-giyim/a_premium_close-up_portrait_fashion_202606192332-pxsx.jpg",
+          "ratio": "3:4",
+          "title": "Doğallığın İçindeki Şıklık"
+        },
+        {
+          "id": "added-w10pzao",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782139204/aiva/cocuk-giyim/a_candid-style_professional_catalog_shot_202606192333-8tg5.jpg",
+          "ratio": "3:4",
+          "title": "Mutlu Anların Hikayesi"
+        },
+        {
+          "id": "added-jzbfvjp",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782139280/aiva/cocuk-giyim/a_high-end_professional_catalog_photograph_202606192333-stw4.jpg",
+          "ratio": "3:4",
+          "title": "Küçük Yıldızlar"
+        }
+      ],
+      "titles": {
+        "cg-1": " Çocukluğa Dokunan Stil",
+        "cg-2": " Küçük Adımlar Büyük Hayaller"
+      },
+      "sources": {
+        "cg-1": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782138849/aiva/cocuk-giyim/a_professional_candid_product-focused_childrens_202606192347-wko3.jpg",
+        "cg-2": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782138952/aiva/cocuk-giyim/curious_18-month-old_toddler_girl_bending_202606192352-eh8g.jpg"
+      },
+      "cover": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782138763/aiva/cocuk-giyim/cover-_a_dynamic_lifestyle_fashion_catalog_202606192338-8nbz.jpg"
+    },
+    "ic-giyim": {
+      "order": [
+        "added-ux2spt6",
+        "added-mziqr78",
+        "added-aq1jdu6"
+      ],
+      "hidden": [],
+      "added": [
+        {
+          "id": "added-ux2spt6",
+          "type": "video",
+          "src": "https://res.cloudinary.com/dcgrw4djz/video/upload/v1782139943/aiva/ic-giyim/openart-ab56161ed4773e0a89aef36a2a79d157-926d4ace-18bf-413f-9eb8-e525f1498f2d_1780409787501_2ea1c55b-66w6.mp4",
+          "ratio": "9:16",
+          "title": "Kıyıdaki Zarafet"
+        },
+        {
+          "id": "added-mziqr78",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782140198/aiva/ic-giyim/openart-021780347499892c0a335079e7be4c79ef57584e00819ba26c9d4_0_1780347543420_e8d9a58d-1-u0c1.png",
+          "ratio": "3:4",
+          "title": "Sonsuz Yaz"
+        },
+        {
+          "id": "added-aq1jdu6",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782140236/aiva/ic-giyim/openart-021780580472587fdccfc102ca12157f94275e78054dc3b7206d7_0_1780580547877_b1b1a907-38jn.png",
+          "ratio": "3:4",
+          "title": "Zamansız Yaz Şıklığı"
+        }
+      ],
+      "titles": {
+        "ig-1": " Denizin Ritmi",
+        "ig-2": " Güneşin İzinde"
+      },
+      "sources": {
+        "ig-1": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782139692/aiva/ic-giyim/openart-021780594297108d82d61e1341a38f1d55b18f5893f198b96f001_0_1780594362996_71cf04cb-fw36.png",
+        "ig-2": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782139880/aiva/ic-giyim/openart-02178034550555835c9db62ef7a9766eeb1c4efe709aaa9279bae_0_1780345580319_91d50b84-tbcz.png"
+      },
+      "cover": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782139670/aiva/ic-giyim/cover-openart-0217803444019106362ddeee9049477b0b29b68d55a9ae9db1576_0_1780344453830_6fbe001a-vay6.png"
+    }
+  },
   "custom": [],
   "settings": {
-    "logoUrl": "/logo.jpg"
-  }
+    "brandNameTr": "AIVA",
+    "brandNameEn": "AIVA",
+    "brandTaglineTr": "Kreatif Prodüksiyon & Reklam Stüdyosu",
+    "brandTaglineEn": "Creative Production & Advertising Studio",
+    "logoUrl": "/logo.jpg",
+    "heroTitleTr": "Yaratıcı Vizyon ve Estetiğin Zirvesi",
+    "heroTitleEn": "The Pinnacle of Creative Vision and Aesthetics",
+    "heroSubtitleTr": "Aiva Stüdyo, yüksek bütçeli moda markaları ve kreatif ajanslar için dünya standartlarında reklam, görsel ve video prodüksiyonu sunar.",
+    "heroSubtitleEn": "Aiva Studio delivers world-class advertising, visual, and video production for high-end fashion brands and creative agencies.",
+    "heroBannerUrl": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782131215/aiva/settings/heroBannerUrl-gorseli_degistirmeden_tekrar_uret_2k_202606221526-82bu.jpg"
+  },
+  "services": [
+    {
+      "id": "s1",
+      "titleTr": "Yapay Zekâ Görsel Üretimi",
+      "titleEn": "AI Visual Generation",
+      "descTr": "Modellerinizi stüdyo ortamına ihtiyaç duymadan, dilediğiniz arka plan ve konseptte profesyonelce sunuyoruz.",
+      "descEn": "We professionally present your models in any background and concept without the need for a studio environment."
+    },
+    {
+      "id": "s2",
+      "titleTr": "Kreatif Video Prodüksiyon",
+      "titleEn": "Creative Video Production",
+      "descTr": "Sosyal medya, reklam ve e-ticaret siteleri için dinamik, yüksek çözünürlüklü ve hikaye odaklı videolar üretiyoruz.",
+      "descEn": "We produce dynamic, high-resolution, and story-driven videos for social media, ads, and e-commerce websites."
+    },
+    {
+      "id": "s3",
+      "titleTr": "Koleksiyon Kampanyaları",
+      "titleEn": "Collection Campaigns",
+      "descTr": "Sezonluk koleksiyonlarınızı, markanızın estetik diline uygun temalar ve yapay zekâ modelleriyle hızlıca yayına hazırlıyoruz.",
+      "descEn": "We quickly prepare your seasonal collections for launch with themes and AI models matching your brand's aesthetic language."
+    },
+    {
+      "id": "s4",
+      "titleTr": "B2B Katalog & E-Ticaret",
+      "titleEn": "B2B Catalogs & E-Commerce",
+      "descTr": "E-ticaret siteleri ve B2B sipariş platformları için yüksek standartlı ve tutarlı ürün katalogları oluşturuyoruz.",
+      "descEn": "We build high-standard and consistent product catalogs for e-commerce sites and B2B ordering platforms."
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "t1",
+      "authorTr": "Merve K. — Moda Tasarımcısı",
+      "authorEn": "Merve K. — Fashion Designer",
+      "textTr": "Aiva Stüdyo ile çalışmak koleksiyonumuzun hazırlık sürecini inanılmaz kısalttı. Yapay zekâ ile ürettikleri görseller stüdyo çekimlerinden farksızdı.",
+      "textEn": "Working with Aiva Studio dramatically shortened our collection prep phase. The visuals they generated with AI were identical to actual studio shoots."
+    },
+    {
+      "id": "t2",
+      "authorTr": "Ahmet T. — E-Ticaret Direktörü",
+      "authorEn": "Ahmet T. — E-Commerce Director",
+      "textTr": "Katalog çekimlerindeki maliyetlerimizi %70 oranında düşürdük. Hız ve kalite gerçekten kusursuz.",
+      "textEn": "We cut our catalog shooting costs by 70%. The speed and quality are truly impeccable."
+    },
+    {
+      "id": "t3",
+      "authorTr": "Canan D. — Pazarlama Müdürü",
+      "authorEn": "Canan D. — Marketing Manager",
+      "textTr": "Sosyal medya kampanyalarımız için hazırladıkları videolar harika dönüşümler getirdi. Çok profesyonel bir ekip.",
+      "textEn": "The videos they produced for our social media campaigns brought great conversion rates. A very professional team."
+    }
+  ],
+  "faqs": [
+    {
+      "id": "q1",
+      "questionTr": "Yapay zekâ destekli görsel üretimi nasıl çalışır?",
+      "questionEn": "How does AI-powered visual generation work?",
+      "answerTr": "Ürünlerinizin temel fotoğraflarını alarak, bunları gelişmiş yapay zekâ modellerimiz ve istediğiniz arka plan/konseptlerle birleştirip profesyonel kampanya görsellerine dönüştürüyoruz.",
+      "answerEn": "Taking basic photos of your products, we merge them with our advanced AI models and your desired background/concept to transform them into professional campaign visuals."
+    },
+    {
+      "id": "q2",
+      "questionTr": "Teslimat süreleriniz ne kadardır?",
+      "questionEn": "What are your delivery times?",
+      "answerTr": "Klasik stüdyo çekimlerine kıyasla çok daha hızlıyız. Talebin büyüklüğüne göre genellikle 3 ila 7 iş günü içerisinde tüm teslimatları yapıyoruz.",
+      "answerEn": "We are much faster compared to classic studio shoots. Depending on the request scale, we typically deliver all assets within 3 to 7 business days."
+    },
+    {
+      "id": "q3",
+      "questionTr": "Fiyatlandırma modeliniz nasıl?",
+      "questionEn": "What is your pricing model?",
+      "answerTr": "Proje bazlı veya aylık paketler halinde çalışıyoruz. İhtiyaçlarınıza en uygun teklifi almak için bizimle iletişime geçebilirsiniz.",
+      "answerEn": "We work on a project basis or monthly packages. You can contact us to get the most suitable offer for your needs."
+    }
+  ]
 }

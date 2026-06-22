@@ -36,11 +36,7 @@ export default async function HomePage({ params }: PageProps) {
   const heroSubtitle = locale === "tr" ? (settings.heroSubtitleTr || tHero("subtitle")) : (settings.heroSubtitleEn || tHero("subtitle"));
   const heroBannerUrl = settings.heroBannerUrl || "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1600&auto=format&fit=crop";
 
-  // Mock brands for horizontal marquee
-  const brands = [
-    "VOGUE", "ELLE", "ZARA", "MANGO", "PRADA", "GUCCI", 
-    "VALENTINO", "CHANEL", "BALENCIAGA", "DIOR", "HERMES"
-  ];
+
 
   // How it works steps
   const steps = locale === "tr" ? [
@@ -80,19 +76,16 @@ export default async function HomePage({ params }: PageProps) {
           {/* Hero Top Content: Rebranding to premium creative studio */}
           <div className="max-w-4xl space-y-8 text-cream">
             <Reveal delay={0.1}>
-              <span className="eyebrow text-brass tracking-[0.35em] block">{brandTagline}</span>
-            </Reveal>
-            <Reveal delay={0.2}>
               <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extralight leading-[1.05] tracking-tight text-cream">
                 {heroTitle}
               </h1>
             </Reveal>
-            <Reveal delay={0.3}>
+            <Reveal delay={0.2}>
               <p className="text-lg sm:text-xl text-bone/85 max-w-3xl font-light leading-relaxed">
                 {heroSubtitle}
               </p>
             </Reveal>
-            <Reveal delay={0.4}>
+            <Reveal delay={0.3}>
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link
                   href="/calismalar"
@@ -112,7 +105,7 @@ export default async function HomePage({ params }: PageProps) {
           </div>
 
           {/* Secondary stats section - smaller and editorial at the bottom of hero */}
-          <Reveal delay={0.5} className="w-full border-t border-cream/20 pt-10">
+          <Reveal delay={0.4} className="w-full border-t border-cream/20 pt-10">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
               {siteConfig.stats.map((stat, i) => (
                 <div key={i} className="flex flex-col space-y-2 border-l border-cream/15 pl-6 first:border-0 first:pl-0">
@@ -125,25 +118,7 @@ export default async function HomePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* 2. Social Proof Marquee */}
-      <section className="w-full border-y border-line bg-cream/40 py-8 overflow-hidden select-none">
-        <div className="flex w-[200%] animate-marquee">
-          <div className="flex justify-around w-1/2 items-center">
-            {brands.map((brand, i) => (
-              <span key={i} className="font-display text-lg font-bold tracking-[0.2em] text-stone-soft opacity-70">
-                {brand}
-              </span>
-            ))}
-          </div>
-          <div className="flex justify-around w-1/2 items-center">
-            {brands.map((brand, i) => (
-              <span key={i} className="font-display text-lg font-bold tracking-[0.2em] text-stone-soft opacity-70">
-                {brand}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* 3. Services Section */}
       <section className="mx-auto max-w-7xl px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -367,7 +342,7 @@ export default async function HomePage({ params }: PageProps) {
                 {tFinalCta("button")}
               </Link>
               <a
-                href={siteConfig.whatsapp}
+                href={settings.whatsapp || siteConfig.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-xl border border-cream/30 hover:border-cream bg-ink-soft/20 px-8 py-4 text-sm font-bold text-cream hover:bg-cream/10 transition-all flex items-center justify-center gap-2"

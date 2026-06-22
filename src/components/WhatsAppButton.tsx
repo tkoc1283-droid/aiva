@@ -3,10 +3,16 @@
 import React from "react";
 import { siteConfig } from "../config/site";
 
-export default function WhatsAppButton() {
+import { GlobalSettings } from "../lib/overrides";
+
+interface WhatsAppButtonProps {
+  settings?: GlobalSettings;
+}
+
+export default function WhatsAppButton({ settings }: WhatsAppButtonProps) {
   return (
     <a
-      href={siteConfig.whatsapp}
+      href={settings?.whatsapp || siteConfig.whatsapp}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp"

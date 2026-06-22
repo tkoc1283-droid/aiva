@@ -64,6 +64,11 @@ export default async function SectorDetailPage({ params }: SectorDetailPageProps
 
   const tSectorPage = await getTranslations("SectorPage");
 
+  // Load store settings overrides
+  const store = await getStore();
+  const settings = store.settings || {};
+  const whatsapp = settings.whatsapp || siteConfig.whatsapp;
+
   const sectorName = sector.name[locale as "tr" | "en"] || "";
   const tagline = sector.tagline[locale as "tr" | "en"] || "";
 
@@ -131,7 +136,7 @@ export default async function SectorDetailPage({ params }: SectorDetailPageProps
             </p>
           </div>
           <a
-            href={siteConfig.whatsapp}
+            href={whatsapp}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-xl bg-clay hover:bg-clay-deep text-cream px-8 py-4 text-sm font-bold shadow-kx transition-all hover:shadow-kx-lg flex items-center justify-center gap-2 active:scale-95 duration-200"

@@ -70,19 +70,19 @@ export default function Footer({ settings }: FooterProps) {
           <div className="text-sm text-stone-soft space-y-2">
             <p>
               Email:{" "}
-              <a href={`mailto:${siteConfig.email}`} className="text-cream hover:underline">
-                {siteConfig.email}
+              <a href={`mailto:${settings?.email || siteConfig.email}`} className="text-cream hover:underline">
+                {settings?.email || siteConfig.email}
               </a>
             </p>
             <p>
               WhatsApp:{" "}
-              <a href={siteConfig.whatsapp} target="_blank" rel="noopener noreferrer" className="text-cream hover:underline">
+              <a href={settings?.whatsapp || siteConfig.whatsapp} target="_blank" rel="noopener noreferrer" className="text-cream hover:underline">
                 {locale === "tr" ? "Bize Yazın" : "Message Us"}
               </a>
             </p>
             <div className="flex space-x-4 pt-3">
               <a
-                href={siteConfig.socials.instagram}
+                href={settings?.instagram || siteConfig.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs eyebrow tracking-widest text-stone-soft hover:text-cream transition-colors"
@@ -90,7 +90,7 @@ export default function Footer({ settings }: FooterProps) {
                 INSTAGRAM
               </a>
               <a
-                href={siteConfig.socials.youtube}
+                href={settings?.youtube || siteConfig.socials.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs eyebrow tracking-widest text-stone-soft hover:text-cream transition-colors"

@@ -20,6 +20,12 @@ export interface GlobalSettings {
   heroSubtitleTr?: string;
   heroSubtitleEn?: string;
   heroBannerUrl?: string;
+  email?: string;
+  phone?: string;
+  phoneRaw?: string;
+  whatsapp?: string;
+  instagram?: string;
+  youtube?: string;
 }
 
 export interface ServiceItem {
@@ -50,7 +56,12 @@ export interface SectorOverride {
   order: string[];
   hidden: string[];
   titles?: Record<string, string>; // mediaId -> title text
+  sources?: Record<string, string>; // mediaId -> overridden src url
   added?: AddedMedia[];
+  cover?: string;
+  accent?: string;
+  tagline?: string;
+  name?: string;
 }
 
 export interface CustomSector {
@@ -87,6 +98,12 @@ function normalize(store: any): Store {
     heroSubtitleTr: "Aiva Stüdyo, yüksek bütçeli moda markaları ve kreatif ajanslar için dünya standartlarında reklam, görsel ve video prodüksiyonu sunar.",
     heroSubtitleEn: "Aiva Studio delivers world-class advertising, visual, and video production for high-end fashion brands and creative agencies.",
     heroBannerUrl: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1600&auto=format&fit=crop",
+    email: "info@aivastudyo.com",
+    phone: "",
+    phoneRaw: "+905358282246",
+    whatsapp: "https://wa.me/905358282246",
+    instagram: "https://instagram.com/aivastudyo",
+    youtube: "https://youtube.com/@aivastudyo",
   };
 
   const defaultServices: ServiceItem[] = [

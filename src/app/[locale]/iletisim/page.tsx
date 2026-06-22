@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import Reveal from "../../../components/Reveal";
 import ContactForm from "../../../components/ContactForm";
 import { siteConfig } from "../../../config/site";
+import { getStore } from "../../../lib/overrides";
 import { Mail, MessageSquare, Clock } from "lucide-react";
 
 interface PageProps {
@@ -26,6 +27,13 @@ export default async function ContactPage({ params }: PageProps) {
 
   const tNav = await getTranslations("Nav");
   const tContact = await getTranslations("Contact");
+
+  // Load store settings overrides
+  const store = await getStore();
+  const settings = store.settings || {};
+
+  const email = settings.email || siteConfig.email;
+  const whatsapp = settings.whatsapp || siteConfig.whatsapp;
 
   // Filter translation keys for form component
   const formTranslations = {
@@ -74,8 +82,8 @@ export default async function ContactPage({ params }: PageProps) {
               </div>
               <div className="space-y-1">
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-stone">Email</h4>
-                <a href={`mailto:${siteConfig.email}`} className="text-base text-ink font-semibold hover:text-clay hover:underline">
-                  {siteConfig.email}
+                <a href={`mailto:${email}`} className="text-base text-ink font-semibold hover:text-clay hover:underline">
+                  {email}
                 </a>
               </div>
             </div>
@@ -87,7 +95,7 @@ export default async function ContactPage({ params }: PageProps) {
               </div>
               <div className="space-y-1">
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-stone">WhatsApp</h4>
-                <a href={siteConfig.whatsapp} target="_blank" rel="noopener noreferrer" className="text-base text-ink font-semibold hover:text-clay hover:underline block">
+                <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="text-base text-ink font-semibold hover:text-clay hover:underline block">
                   {tContact("whatsappInfo")}
                 </a>
               </div>

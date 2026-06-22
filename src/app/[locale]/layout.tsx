@@ -87,7 +87,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           <Navbar settings={settings} />
           <main className="flex-grow">{children}</main>
           <Footer settings={settings} />
-          <WhatsAppButton />
+          <WhatsAppButton settings={settings} />
         </NextIntlClientProvider>
       </body>
     </html>

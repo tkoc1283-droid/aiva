@@ -19,6 +19,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing publicId parameter" }, { status: 400 });
     }
 
+    if (!process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ||
+        !process.env.CLOUDINARY_API_KEY ||
+        !process.env.CLOUDINARY_API_SECRET) {
+      return NextResponse.json({
+        error: "Cloudinary yapılandırması eksik! Lütfen .env.local dosyasındaki Cloudinary değişkenlerini doldurun."
+      }, { status: 400 });
+    }
+
     const timestamp = Math.round(new Date().getTime() / 1000);
     const paramsToSign = {
       public_id: publicId,

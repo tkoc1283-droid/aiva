@@ -9,8 +9,17 @@ export async function getDisplaySectors(): Promise<Sector[]> {
   const mappedBaseSectors = baseSectors.map((sector) => {
     const ov = store.overrides[sector.slug];
     let media = [...sector.media];
+    let cover = sector.cover;
+    let accent = sector.accent;
+    let name = { ...sector.name };
+    let tagline = { ...sector.tagline };
 
     if (ov) {
+      if (ov.cover) cover = ov.cover;
+      if (ov.accent) accent = ov.accent;
+      if (ov.name) name = { tr: ov.name, en: ov.name };
+      if (ov.tagline) tagline = { tr: ov.tagline, en: ov.tagline };
+
       // 1. Merge added media from dashboard
       if (ov.added) {
         const addedMediaItems: MediaItem[] = ov.added.map((m) => ({
@@ -21,6 +30,20 @@ export async function getDisplaySectors(): Promise<Sector[]> {
           title: { tr: m.title, en: m.title },
         }));
         media = [...media, ...addedMediaItems];
+      }
+
+      // 1b. Apply source overrides
+      if (ov.sources) {
+        media = media.map((item) => {
+          const overriddenSrc = ov.sources?.[item.id];
+          if (overriddenSrc) {
+            return {
+              ...item,
+              src: overriddenSrc,
+            };
+          }
+          return item;
+        });
       }
 
       // 2. Apply title overrides
@@ -43,6 +66,10 @@ export async function getDisplaySectors(): Promise<Sector[]> {
 
     return {
       ...sector,
+      name,
+      tagline,
+      cover,
+      accent,
       media,
     };
   });
