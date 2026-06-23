@@ -13,7 +13,7 @@ interface VideoPlayerProps {
 export default function VideoPlayer({ src, poster, className = "" }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
 
   const togglePlay = () => {
     if (!videoRef.current) return;
