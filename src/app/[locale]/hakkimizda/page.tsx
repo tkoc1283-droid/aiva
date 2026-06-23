@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import Reveal from "../../../components/Reveal";
 import { siteConfig } from "../../../config/site";
 import { Link } from "../../../i18n/navigation";
+import { getStore } from "../../../lib/overrides";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -27,6 +28,42 @@ export default async function AboutPage({ params }: PageProps) {
   const tNav = await getTranslations("Nav");
   const tHero = await getTranslations("Hero");
 
+  // Load from store settings
+  const store = await getStore();
+  const settings = store.settings || {};
+
+  const title = locale === "tr" ? (settings.aboutTitleTr || tAbout("title")) : (settings.aboutTitleEn || tAbout("title"));
+  const subtitle = locale === "tr" ? (settings.aboutSubtitleTr || tAbout("subtitle")) : (settings.aboutSubtitleEn || tAbout("subtitle"));
+  const p1 = locale === "tr" ? (settings.aboutP1Tr || tAbout("p1")) : (settings.aboutP1En || tAbout("p1"));
+  const p2 = locale === "tr" ? (settings.aboutP2Tr || tAbout("p2")) : (settings.aboutP2En || tAbout("p2"));
+
+  const values = [
+    {
+      title: locale === "tr" 
+        ? (settings.aboutVal1TitleTr || "Hız & Verimlilik") 
+        : (settings.aboutVal1TitleEn || "Speed & Efficiency"),
+      desc: locale === "tr" 
+        ? (settings.aboutVal1DescTr || "Çekim günleri ve hazırlık haftalarını birkaç güne indiriyoruz.") 
+        : (settings.aboutVal1DescEn || "We reduce shooting days and preparation weeks into just a few days.")
+    },
+    {
+      title: locale === "tr" 
+        ? (settings.aboutVal2TitleTr || "Yenilikçilik") 
+        : (settings.aboutVal2TitleEn || "Innovation"),
+      desc: locale === "tr" 
+        ? (settings.aboutVal2DescTr || "Yapay zekâ teknolojilerini estetik moda tasarımıyla entegre ediyoruz.") 
+        : (settings.aboutVal2DescEn || "We integrate AI technologies with high-end fashion design aesthetics.")
+    },
+    {
+      title: locale === "tr" 
+        ? (settings.aboutVal3TitleTr || "Erişilebilirlik") 
+        : (settings.aboutVal3TitleEn || "Accessibility"),
+      desc: locale === "tr" 
+        ? (settings.aboutVal3DescTr || "Büyük bütçeli prodüksiyonları her ölçekteki marka için ulaşılabilir kılıyoruz.") 
+        : (settings.aboutVal3DescEn || "We make high-budget productions accessible for brands of all sizes.")
+    }
+  ];
+
   return (
     <div className="mx-auto max-w-7xl px-6 py-20 space-y-20">
       {/* Header */}
@@ -36,12 +73,12 @@ export default async function AboutPage({ params }: PageProps) {
         </Reveal>
         <Reveal delay={0.2}>
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink leading-tight">
-            {tAbout("title")}
+            {title}
           </h1>
         </Reveal>
         <Reveal delay={0.3}>
           <p className="text-lg text-brass italic font-display font-medium">
-            {tAbout("subtitle")}
+            {subtitle}
           </p>
         </Reveal>
       </div>
@@ -52,12 +89,12 @@ export default async function AboutPage({ params }: PageProps) {
         <div className="lg:col-span-7 space-y-6">
           <Reveal delay={0.2}>
             <p className="text-base text-ink leading-relaxed">
-              {tAbout("p1")}
+              {p1}
             </p>
           </Reveal>
           <Reveal delay={0.3}>
             <p className="text-base text-ink-soft leading-relaxed">
-              {tAbout("p2")}
+              {p2}
             </p>
           </Reveal>
           <Reveal delay={0.4}>
@@ -79,20 +116,7 @@ export default async function AboutPage({ params }: PageProps) {
           </h3>
           
           <div className="space-y-6">
-            {[
-              {
-                title: locale === "tr" ? "Hız & Verimlilik" : "Speed & Efficiency",
-                desc: locale === "tr" ? "Çekim günleri ve hazırlık haftalarını birkaç güne indiriyoruz." : "We reduce shooting days and preparation weeks into just a few days."
-              },
-              {
-                title: locale === "tr" ? "Yenilikçilik" : "Innovation",
-                desc: locale === "tr" ? "Yapay zekâ teknolojilerini estetik moda tasarımıyla entegre ediyoruz." : "We integrate AI technologies with high-end fashion design aesthetics."
-              },
-              {
-                title: locale === "tr" ? "Erişilebilirlik" : "Accessibility",
-                desc: locale === "tr" ? "Büyük bütçeli prodüksiyonları her ölçekteki marka için ulaşılabilir kılıyoruz." : "We make high-budget productions accessible for brands of all sizes."
-              }
-            ].map((val, idx) => (
+            {values.map((val, idx) => (
               <div key={idx} className="space-y-2 border-b border-line/40 pb-4 last:border-0 last:pb-0">
                 <h4 className="font-display text-lg font-bold text-ink">{val.title}</h4>
                 <p className="text-xs text-ink-soft leading-relaxed">{val.desc}</p>

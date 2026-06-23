@@ -16,6 +16,7 @@ export default function Footer({ settings }: FooterProps) {
 
   const brandName = locale === "tr" ? (settings?.brandNameTr || "AIVA") : (settings?.brandNameEn || "AIVA");
   const brandTagline = locale === "tr" ? (settings?.brandTaglineTr || "stüdyo") : (settings?.brandTaglineEn || "studio");
+  const slogan = locale === "tr" ? (settings?.footerSloganTr || t("slogan")) : (settings?.footerSloganEn || t("slogan"));
 
   return (
     <footer className="w-full bg-ink text-bone border-t border-line/20 py-16 transition-colors duration-300">
@@ -41,7 +42,7 @@ export default function Footer({ settings }: FooterProps) {
             </div>
           </Link>
           <p className="text-sm text-stone-soft max-w-xs leading-relaxed">
-            {t("slogan")}
+            {slogan}
           </p>
         </div>
 

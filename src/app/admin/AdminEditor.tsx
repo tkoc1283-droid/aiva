@@ -657,6 +657,30 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
               </button>
 
               <button
+                onClick={() => setSelectedSlug("about")}
+                className={`w-full text-left px-4 py-3 rounded-xl transition-all text-sm font-semibold border ${
+                  selectedSlug === "about"
+                    ? "bg-ink text-cream border-ink"
+                    : "bg-cream text-ink hover:bg-bone/20 border-transparent"
+                }`}
+              >
+                ℹ️ Hakkımızda Sayfası
+                <span className="block text-[10px] font-normal opacity-70">Hikayemiz & Değerlerimiz</span>
+              </button>
+
+              <button
+                onClick={() => setSelectedSlug("contact")}
+                className={`w-full text-left px-4 py-3 rounded-xl transition-all text-sm font-semibold border ${
+                  selectedSlug === "contact"
+                    ? "bg-ink text-cream border-ink"
+                    : "bg-cream text-ink hover:bg-bone/20 border-transparent"
+                }`}
+              >
+                📞 İletişim Sayfası
+                <span className="block text-[10px] font-normal opacity-70">İletişim Başlık & Saatleri</span>
+              </button>
+
+              <button
                 onClick={() => setSelectedSlug("services")}
                 className={`w-full text-left px-4 py-3 rounded-xl transition-all text-sm font-semibold border ${
                   selectedSlug === "services"
@@ -1006,7 +1030,7 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-semibold text-stone mb-2">"Nasıl Çalışıyoruz?" Bölüm Başlığı (TR)</label>
+                      <label className="block text-xs font-semibold text-stone mb-2">Nasıl Çalışıyoruz? Bölüm Başlığı (TR)</label>
                       <input
                         type="text"
                         value={store.settings?.howItWorksHeadingTr || ""}
@@ -1018,7 +1042,7 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-stone mb-2">"Nasıl Çalışıyoruz?" Bölüm Başlığı (EN)</label>
+                      <label className="block text-xs font-semibold text-stone mb-2">Nasıl Çalışıyoruz? Bölüm Başlığı (EN)</label>
                       <input
                         type="text"
                         value={store.settings?.howItWorksHeadingEn || ""}
@@ -1033,7 +1057,7 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-semibold text-stone mb-2">"Hizmet Verdiğimiz Sektörler" Bölüm Başlığı (TR)</label>
+                      <label className="block text-xs font-semibold text-stone mb-2">Hizmet Verdiğimiz Sektörler Bölüm Başlığı (TR)</label>
                       <input
                         type="text"
                         value={store.settings?.sectorsHeadingTr || ""}
@@ -1045,7 +1069,7 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-stone mb-2">"Hizmet Verdiğimiz Sektörler" Bölüm Başlığı (EN)</label>
+                      <label className="block text-xs font-semibold text-stone mb-2">Hizmet Verdiğimiz Sektörler Bölüm Başlığı (EN)</label>
                       <input
                         type="text"
                         value={store.settings?.sectorsHeadingEn || ""}
@@ -1283,12 +1307,438 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
                   </div>
                 </div>
 
+                {/* Footer Section */}
+                <div className="border-t border-line/40 pt-6 space-y-4">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-stone">Footer Sloganı</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-semibold text-stone mb-2">Slogan (TR)</label>
+                      <input
+                        type="text"
+                        value={store.settings?.footerSloganTr || ""}
+                        onChange={(e) => setStore(prev => ({
+                          ...prev,
+                          settings: { ...(prev.settings || {}), footerSloganTr: e.target.value }
+                        }))}
+                        className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-stone mb-2">Slogan (EN)</label>
+                      <input
+                        type="text"
+                        value={store.settings?.footerSloganEn || ""}
+                        onChange={(e) => setStore(prev => ({
+                          ...prev,
+                          settings: { ...(prev.settings || {}), footerSloganEn: e.target.value }
+                        }))}
+                        className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 {isUploading && (
                   <div className="flex items-center justify-center gap-2 text-sm text-clay font-semibold bg-clay/5 border border-clay/10 p-3 rounded-xl">
                     <Loader2 className="h-4 w-4 animate-spin" />
                     Görsel yükleniyor, lütfen bekleyin...
                   </div>
                 )}
+              </div>
+            </div>
+          ) : selectedSlug === "about" ? (
+            <div className="bg-cream border border-line rounded-2xl p-8 shadow-kx space-y-6 animate-rise text-ink">
+              <div className="border-b border-line pb-6 space-y-4">
+                <span className="eyebrow text-brass">HAKKIMIZDA DÜZENLEME</span>
+                <h2 className="font-display text-3xl font-bold text-ink">
+                  Hakkımızda Sayfa İçeriği
+                </h2>
+                <p className="text-sm text-ink-soft">
+                  Hakkımızda sayfasının başlığını, alt başlığını, metinlerini ve 3 temel değerini buradan değiştirebilirsiniz.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Sayfa Başlığı (TR)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.aboutTitleTr || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), aboutTitleTr: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Sayfa Başlığı (EN)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.aboutTitleEn || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), aboutTitleEn: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Alt Başlık (TR)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.aboutSubtitleTr || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), aboutSubtitleTr: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Alt Başlık (EN)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.aboutSubtitleEn || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), aboutSubtitleEn: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Paragraf 1 (TR)</label>
+                    <textarea
+                      rows={4}
+                      value={store.settings?.aboutP1Tr || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), aboutP1Tr: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay resize-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Paragraf 1 (EN)</label>
+                    <textarea
+                      rows={4}
+                      value={store.settings?.aboutP1En || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), aboutP1En: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay resize-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Paragraf 2 (TR)</label>
+                    <textarea
+                      rows={4}
+                      value={store.settings?.aboutP2Tr || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), aboutP2Tr: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay resize-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Paragraf 2 (EN)</label>
+                    <textarea
+                      rows={4}
+                      value={store.settings?.aboutP2En || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), aboutP2En: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay resize-none"
+                    />
+                  </div>
+                </div>
+
+                {/* Values block */}
+                <div className="border-t border-line/40 pt-6 space-y-6">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-stone">Değerlerimiz</h3>
+                  
+                  {[1, 2, 3].map((valNum) => {
+                    const titleTrKey = `aboutVal${valNum}TitleTr` as keyof GlobalSettings;
+                    const titleEnKey = `aboutVal${valNum}TitleEn` as keyof GlobalSettings;
+                    const descTrKey = `aboutVal${valNum}DescTr` as keyof GlobalSettings;
+                    const descEnKey = `aboutVal${valNum}DescEn` as keyof GlobalSettings;
+
+                    return (
+                      <div key={valNum} className="border border-line/60 bg-bone/20 p-5 rounded-xl space-y-4">
+                        <h4 className="text-xs font-bold text-ink-soft uppercase tracking-wider">Değer #{valNum}</h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-[11px] font-semibold text-stone mb-1">Değer Başlığı (TR)</label>
+                            <input
+                              type="text"
+                              value={(store.settings?.[titleTrKey] as string) || ""}
+                              onChange={(e) => setStore(prev => ({
+                                ...prev,
+                                settings: { ...(prev.settings || {}), [titleTrKey]: e.target.value }
+                              }))}
+                              className="w-full rounded-lg border border-line bg-bone px-3 py-2 text-xs text-ink focus:outline-none focus:border-clay"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[11px] font-semibold text-stone mb-1">Değer Başlığı (EN)</label>
+                            <input
+                              type="text"
+                              value={(store.settings?.[titleEnKey] as string) || ""}
+                              onChange={(e) => setStore(prev => ({
+                                ...prev,
+                                settings: { ...(prev.settings || {}), [titleEnKey]: e.target.value }
+                              }))}
+                              className="w-full rounded-lg border border-line bg-bone px-3 py-2 text-xs text-ink focus:outline-none focus:border-clay"
+                            />
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-[11px] font-semibold text-stone mb-1">Açıklama (TR)</label>
+                            <textarea
+                              rows={2}
+                              value={(store.settings?.[descTrKey] as string) || ""}
+                              onChange={(e) => setStore(prev => ({
+                                ...prev,
+                                settings: { ...(prev.settings || {}), [descTrKey]: e.target.value }
+                              }))}
+                              className="w-full rounded-lg border border-line bg-bone px-3 py-2 text-xs text-ink focus:outline-none focus:border-clay resize-none"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[11px] font-semibold text-stone mb-1">Açıklama (EN)</label>
+                            <textarea
+                              rows={2}
+                              value={(store.settings?.[descEnKey] as string) || ""}
+                              onChange={(e) => setStore(prev => ({
+                                ...prev,
+                                settings: { ...(prev.settings || {}), [descEnKey]: e.target.value }
+                              }))}
+                              className="w-full rounded-lg border border-line bg-bone px-3 py-2 text-xs text-ink focus:outline-none focus:border-clay resize-none"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          ) : selectedSlug === "contact" ? (
+            <div className="bg-cream border border-line rounded-2xl p-8 shadow-kx space-y-6 animate-rise text-ink">
+              <div className="border-b border-line pb-6 space-y-4">
+                <span className="eyebrow text-brass">İLETİŞİM SAYFASI DÜZENLEME</span>
+                <h2 className="font-display text-3xl font-bold text-ink">
+                  İletişim Sayfa İçeriği
+                </h2>
+                <p className="text-sm text-ink-soft">
+                  İletişim sayfasının başlıklarını, açıklamalarını ve çalışma saatleri metinlerini Türkçe / İngilizce olarak değiştirebilirsiniz.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Sayfa Başlığı (TR)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.contactTitleTr || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactTitleTr: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Sayfa Başlığı (EN)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.contactTitleEn || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactTitleEn: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Alt Başlık (TR)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.contactSubtitleTr || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactSubtitleTr: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Alt Başlık (EN)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.contactSubtitleEn || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactSubtitleEn: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Bilgi Başlığı (TR) (Örn. İletişim Bilgileri)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.contactInfoTitleTr || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactInfoTitleTr: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Bilgi Başlığı (EN)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.contactInfoTitleEn || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactInfoTitleEn: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Bilgi Açıklaması (TR)</label>
+                    <textarea
+                      rows={2}
+                      value={store.settings?.contactInfoTextTr || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactInfoTextTr: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay resize-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Bilgi Açıklaması (EN)</label>
+                    <textarea
+                      rows={2}
+                      value={store.settings?.contactInfoTextEn || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactInfoTextEn: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay resize-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Form Başlığı (TR)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.contactFormTitleTr || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactFormTitleTr: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Form Başlığı (EN)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.contactFormTitleEn || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactFormTitleEn: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Çalışma Saatleri Başlığı (TR)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.contactWorkingHoursTitleTr || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactWorkingHoursTitleTr: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Çalışma Saatleri Başlığı (EN)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.contactWorkingHoursTitleEn || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactWorkingHoursTitleEn: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Çalışma Saatleri Değeri (TR)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.contactWorkingHoursValTr || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactWorkingHoursValTr: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-stone mb-2">Çalışma Saatleri Değeri (EN)</label>
+                    <input
+                      type="text"
+                      value={store.settings?.contactWorkingHoursValEn || ""}
+                      onChange={(e) => setStore(prev => ({
+                        ...prev,
+                        settings: { ...(prev.settings || {}), contactWorkingHoursValEn: e.target.value }
+                      }))}
+                      className="w-full rounded-xl border border-line bg-bone px-4 py-3 text-sm text-ink focus:outline-none focus:border-clay"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           ) : selectedSlug === "services" ? (

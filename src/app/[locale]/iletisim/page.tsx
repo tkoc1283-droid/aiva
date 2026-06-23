@@ -35,6 +35,14 @@ export default async function ContactPage({ params }: PageProps) {
   const email = settings.email || siteConfig.email;
   const whatsapp = settings.whatsapp || siteConfig.whatsapp;
 
+  const title = locale === "tr" ? (settings.contactTitleTr || tContact("title")) : (settings.contactTitleEn || tContact("title"));
+  const subtitle = locale === "tr" ? (settings.contactSubtitleTr || tContact("subtitle")) : (settings.contactSubtitleEn || tContact("subtitle"));
+  const infoTitle = locale === "tr" ? (settings.contactInfoTitleTr || tContact("infoTitle")) : (settings.contactInfoTitleEn || tContact("infoTitle"));
+  const infoText = locale === "tr" ? (settings.contactInfoTextTr || tContact("infoText")) : (settings.contactInfoTextEn || tContact("contactInfoTextEn") || tContact("infoText")); // fallback safe
+  const formTitle = locale === "tr" ? (settings.contactFormTitleTr || tContact("formTitle")) : (settings.contactFormTitleEn || tContact("formTitle"));
+  const workingHoursTitle = locale === "tr" ? (settings.contactWorkingHoursTitleTr || tContact("workingHoursTitle")) : (settings.contactWorkingHoursTitleEn || tContact("workingHoursTitle"));
+  const workingHoursVal = locale === "tr" ? (settings.contactWorkingHoursValTr || tContact("workingHoursVal")) : (settings.contactWorkingHoursValEn || tContact("workingHoursVal"));
+
   // Filter translation keys for form component
   const formTranslations = {
     name: tContact("name"),
@@ -56,12 +64,12 @@ export default async function ContactPage({ params }: PageProps) {
         </Reveal>
         <Reveal delay={0.2}>
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink leading-tight">
-            {tContact("title")}
+            {title}
           </h1>
         </Reveal>
         <Reveal delay={0.3}>
           <p className="text-base text-ink-soft leading-relaxed">
-            {tContact("subtitle")}
+            {subtitle}
           </p>
         </Reveal>
       </div>
@@ -70,8 +78,8 @@ export default async function ContactPage({ params }: PageProps) {
         {/* Contact Info */}
         <div className="lg:col-span-5 space-y-8 bg-cream border border-line rounded-2xl p-8 shadow-kx">
           <div className="space-y-4">
-            <h3 className="font-display text-2xl font-bold text-ink">{tContact("infoTitle")}</h3>
-            <p className="text-sm text-ink-soft leading-relaxed">{tContact("infoText")}</p>
+            <h3 className="font-display text-2xl font-bold text-ink">{infoTitle}</h3>
+            <p className="text-sm text-ink-soft leading-relaxed">{infoText}</p>
           </div>
 
           <div className="space-y-6 pt-4">
@@ -107,9 +115,9 @@ export default async function ContactPage({ params }: PageProps) {
                 <Clock className="h-5 w-5" />
               </div>
               <div className="space-y-1">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-stone">{tContact("workingHoursTitle")}</h4>
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-stone">{workingHoursTitle}</h4>
                 <p className="text-base text-ink font-semibold">
-                  {tContact("workingHoursVal")}
+                  {workingHoursVal}
                 </p>
               </div>
             </div>
@@ -119,7 +127,7 @@ export default async function ContactPage({ params }: PageProps) {
         {/* Form */}
         <div className="lg:col-span-7 bg-cream border border-line rounded-2xl p-8 shadow-kx space-y-6">
           <h3 className="font-display text-2xl font-bold text-ink border-b border-line pb-4">
-            {tContact("formTitle")}
+            {formTitle}
           </h3>
           <ContactForm translations={formTranslations} />
         </div>

@@ -5,7 +5,14 @@
         "added-8ak2fvo",
         "added-21mngia",
         "added-97nw1cn",
-        "added-r6qag28"
+        "added-r6qag28",
+        "added-cpu1bxc",
+        "added-3xrpvyx",
+        "added-pnnn1fn",
+        "added-i0rbrso",
+        "added-muqv03s",
+        "added-iodguz0",
+        "added-t30276i"
       ],
       "hidden": [],
       "added": [
@@ -36,6 +43,55 @@
           "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782134854/aiva/gelinlik-abiye/bu_kadin_referans_gorseldeki_arka_202606192334-yszi.jpg",
           "ratio": "3:4",
           "title": "Gecenin İmzası"
+        },
+        {
+          "id": "added-cpu1bxc",
+          "type": "video",
+          "src": "https://res.cloudinary.com/dcgrw4djz/video/upload/v1782161534/aiva/gelinlik-abiye/whatsapp-video-2026-06-22-at-235027-n1pw.mp4",
+          "ratio": "9:16",
+          "title": ""
+        },
+        {
+          "id": "added-3xrpvyx",
+          "type": "video",
+          "src": "https://res.cloudinary.com/dcgrw4djz/video/upload/v1782161560/aiva/gelinlik-abiye/whatsapp-video-2026-06-22-at-234812-9e6d.mp4",
+          "ratio": "9:16",
+          "title": ""
+        },
+        {
+          "id": "added-pnnn1fn",
+          "type": "video",
+          "src": "https://res.cloudinary.com/dcgrw4djz/video/upload/v1782161591/aiva/gelinlik-abiye/whatsapp-video-2026-06-22-at-234822-a6pw.mp4",
+          "ratio": "9:16",
+          "title": ""
+        },
+        {
+          "id": "added-i0rbrso",
+          "type": "video",
+          "src": "https://res.cloudinary.com/dcgrw4djz/video/upload/v1782161624/aiva/gelinlik-abiye/whatsapp-video-2026-06-22-at-234828-ipil.mp4",
+          "ratio": "9:16",
+          "title": ""
+        },
+        {
+          "id": "added-muqv03s",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782161664/aiva/gelinlik-abiye/transfer_the_exact_wedding_dress_202606222159-zrxk.jpg",
+          "ratio": "3:4",
+          "title": ""
+        },
+        {
+          "id": "added-iodguz0",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782161674/aiva/gelinlik-abiye/kadin_yere_oturmus_olsun_gelinlik_202606222021-oso6.jpg",
+          "ratio": "3:4",
+          "title": ""
+        },
+        {
+          "id": "added-t30276i",
+          "type": "video",
+          "src": "https://res.cloudinary.com/dcgrw4djz/video/upload/v1782161686/aiva/gelinlik-abiye/whatsapp-video-2026-06-22-at-234757-hp74.mp4",
+          "ratio": "9:16",
+          "title": ""
         }
       ],
       "titles": {
@@ -78,7 +134,9 @@
         "added-1e6c1b6",
         "added-ywihq29",
         "added-w10pzao",
-        "added-jzbfvjp"
+        "added-jzbfvjp",
+        "added-oyjztva",
+        "added-t4ep3fv"
       ],
       "hidden": [],
       "added": [
@@ -116,6 +174,20 @@
           "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782139280/aiva/cocuk-giyim/a_high-end_professional_catalog_photograph_202606192333-stw4.jpg",
           "ratio": "3:4",
           "title": "Küçük Yıldızlar"
+        },
+        {
+          "id": "added-oyjztva",
+          "type": "video",
+          "src": "https://res.cloudinary.com/dcgrw4djz/video/upload/v1782161760/aiva/cocuk-giyim/whatsapp-video-2026-06-22-at-234817-ewro.mp4",
+          "ratio": "9:16",
+          "title": ""
+        },
+        {
+          "id": "added-t4ep3fv",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782161785/aiva/cocuk-giyim/a_high-angle_medium_close-up_shot_202606222014-itui.jpg",
+          "ratio": "3:4",
+          "title": "A_high-angle,_medium_close-up_shot_202606222014"
         }
       ],
       "titles": {
@@ -167,9 +239,128 @@
         "ig-2": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782145833/aiva/ic-giyim/openart-02178051561150930d072d337ea6fcc7bbfbe2f0c485be248957b_0_1780515684643_98b37326-7579.png"
       },
       "cover": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782139670/aiva/ic-giyim/cover-openart-0217803444019106362ddeee9049477b0b29b68d55a9ae9db1576_0_1780344453830_6fbe001a-vay6.png"
+    },
+    "gunluk-giyim": {
+      "order": [
+        "added-ekxja02",
+        "added-oqrn2id",
+        "added-w46a400",
+        "added-9wpet7b",
+        "added-e37h4et",
+        "added-t6eivbj"
+      ],
+      "hidden": [],
+      "added": [
+        {
+          "id": "added-ekxja02",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782161967/aiva/gunluk-giyim/a_cinematic_portrait_shot_of_202606202311-vmb7.jpg",
+          "ratio": "3:4",
+          "title": ""
+        },
+        {
+          "id": "added-oqrn2id",
+          "type": "video",
+          "src": "https://res.cloudinary.com/dcgrw4djz/video/upload/v1782162009/aiva/gunluk-giyim/kamera_kadini_takip_etsin_202606222011-1lsj.mp4",
+          "ratio": "9:16",
+          "title": ""
+        },
+        {
+          "id": "added-w46a400",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782162054/aiva/gunluk-giyim/a_medium_close-up_shot_of_202606202334-32h2.jpg",
+          "ratio": "3:4",
+          "title": ""
+        },
+        {
+          "id": "added-9wpet7b",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782162090/aiva/gunluk-giyim/a_cinematic_wide_shot_of_202606202311-6ex9.jpg",
+          "ratio": "3:4",
+          "title": ""
+        },
+        {
+          "id": "added-e37h4et",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782162129/aiva/gunluk-giyim/bu_kadin_bu_kiyafeti_ve_202606192345-1-s39i.jpg",
+          "ratio": "3:4",
+          "title": ""
+        },
+        {
+          "id": "added-t6eivbj",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782162143/aiva/gunluk-giyim/bu_kadin_bu_kiyafeti_ve_202606192345-vadq.jpg",
+          "ratio": "3:4",
+          "title": ""
+        }
+      ],
+      "titles": {}
+    },
+    "dis-giyim": {
+      "order": [
+        "added-ju2hzt8",
+        "added-hp9dkx4",
+        "added-pgx8yy4",
+        "added-zjl2cs9",
+        "added-4pao4l0"
+      ],
+      "hidden": [],
+      "added": [
+        {
+          "id": "added-ju2hzt8",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782162389/aiva/dis-giyim/raw_photograph_canon_eos_r5_202606192356-vb9k.jpg",
+          "ratio": "3:4",
+          "title": ""
+        },
+        {
+          "id": "added-hp9dkx4",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782162410/aiva/dis-giyim/kurkun_yakasi_bu_referans_gorseldeki_202606192342-fnnp.jpg",
+          "ratio": "3:4",
+          "title": ""
+        },
+        {
+          "id": "added-pgx8yy4",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782162791/aiva/dis-giyim/raw_photograph_leica_m11_50mm_202606230010-eqd1.jpg",
+          "ratio": "3:4",
+          "title": ""
+        },
+        {
+          "id": "added-zjl2cs9",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782162830/aiva/dis-giyim/raw_photograph_leica_q3_28mm_202606230010-fl6p.jpg",
+          "ratio": "3:4",
+          "title": ""
+        },
+        {
+          "id": "added-4pao4l0",
+          "type": "image",
+          "src": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782162865/aiva/dis-giyim/__detayli_yaka_analizi_duzeltilmis____-_202606230011-gdy3.jpg",
+          "ratio": "3:4",
+          "title": ""
+        }
+      ],
+      "titles": {}
     }
   },
-  "custom": [],
+  "custom": [
+    {
+      "slug": "gunluk-giyim",
+      "name": "Günlük Giyim",
+      "tagline": "Tarzın Estetikle Buluşması",
+      "cover": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782161935/aiva/gunluk-giyim/cover-a_full-body_tracking_shot_of_202606202310-dey4.jpg",
+      "accent": "#78523b"
+    },
+    {
+      "slug": "dis-giyim",
+      "name": "Dış Giyim",
+      "tagline": "Her Mevsimde Şıklık",
+      "cover": "https://res.cloudinary.com/dcgrw4djz/image/upload/v1782162366/aiva/dis-giyim/cover-kurkun_boyunu_tam_diz_altinda_202606192356-zhw4.jpg",
+      "accent": "#78523b"
+    }
+  ],
   "settings": {
     "brandNameTr": "AIVA",
     "brandNameEn": "AIVA",
@@ -206,7 +397,16 @@
     "step4TitleTr": "Hızlı Teslimat",
     "step4TitleEn": "Fast Delivery",
     "step4DescTr": "E-ticaret ve sosyal medya kanallarınız için hazır görselleri birkaç günde teslim edelim.",
-    "step4DescEn": "We deliver campaign-ready assets for your channels within a few business days."
+    "step4DescEn": "We deliver campaign-ready assets for your channels within a few business days.",
+    "stat1Num": "%80",
+    "stat1LabelTr": "Daha Hızlı Prodüksiyon",
+    "stat1LabelEn": "Faster Production",
+    "stat2Num": "50+",
+    "stat2LabelTr": "Mutlu Marka",
+    "stat2LabelEn": "Happy Brands",
+    "stat3Num": "10K+",
+    "stat3LabelTr": "Üretilen Görsel & Video",
+    "stat3LabelEn": "Generated Media"
   },
   "services": [
     {

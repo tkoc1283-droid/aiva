@@ -55,6 +55,42 @@ export interface GlobalSettings {
   stat3Num?: string;
   stat3LabelTr?: string;
   stat3LabelEn?: string;
+  aboutTitleTr?: string;
+  aboutTitleEn?: string;
+  aboutSubtitleTr?: string;
+  aboutSubtitleEn?: string;
+  aboutP1Tr?: string;
+  aboutP1En?: string;
+  aboutP2Tr?: string;
+  aboutP2En?: string;
+  aboutVal1TitleTr?: string;
+  aboutVal1TitleEn?: string;
+  aboutVal1DescTr?: string;
+  aboutVal1DescEn?: string;
+  aboutVal2TitleTr?: string;
+  aboutVal2TitleEn?: string;
+  aboutVal2DescTr?: string;
+  aboutVal2DescEn?: string;
+  aboutVal3TitleTr?: string;
+  aboutVal3TitleEn?: string;
+  aboutVal3DescTr?: string;
+  aboutVal3DescEn?: string;
+  contactTitleTr?: string;
+  contactTitleEn?: string;
+  contactSubtitleTr?: string;
+  contactSubtitleEn?: string;
+  contactInfoTitleTr?: string;
+  contactInfoTitleEn?: string;
+  contactInfoTextTr?: string;
+  contactInfoTextEn?: string;
+  contactFormTitleTr?: string;
+  contactFormTitleEn?: string;
+  contactWorkingHoursTitleTr?: string;
+  contactWorkingHoursTitleEn?: string;
+  contactWorkingHoursValTr?: string;
+  contactWorkingHoursValEn?: string;
+  footerSloganTr?: string;
+  footerSloganEn?: string;
 }
 
 export interface ServiceItem {
@@ -161,7 +197,43 @@ function normalize(store: any): Store {
     stat2LabelEn: "Happy Brands",
     stat3Num: "10K+",
     stat3LabelTr: "Üretilen Görsel & Video",
-    stat3LabelEn: "Generated Media"
+    stat3LabelEn: "Generated Media",
+    aboutTitleTr: "Biz Kimiz?",
+    aboutTitleEn: "Who We Are",
+    aboutSubtitleTr: "Geleceğin prodüksiyon teknolojilerini bugünden markanıza sunuyoruz.",
+    aboutSubtitleEn: "We deliver the production technologies of the future to your brand today.",
+    aboutP1Tr: "Aiva Stüdyo, yaratıcılığı yapay zekâ teknolojileriyle birleştiren yeni nesil bir kreatif stüdyodur. Özellikle moda, tekstil ve perakende sektöründeki markalara dijital çağın hızında görsel ve video çözümleri sunuyoruz.",
+    aboutP1En: "Aiva Studio is a next-generation creative studio combining creativity with artificial intelligence technologies. We deliver visual and video solutions at the speed of the digital age, especially to brands in the fashion, textile, and retail sectors.",
+    aboutP2Tr: "Geleneksel stüdyo çekimlerinin getirdiği yüksek bütçe, model bulma zorluğu, mekan kısıtlamaları ve zaman kayıplarını ortadan kaldırıyoruz. Markanızın kimliğine sadık kalarak, hayal ettiğiniz tüm konseptleri gerçeğe dönüştürüyoruz.",
+    aboutP2En: "We eliminate the high budgets, difficulty of finding models, location limitations, and time losses associated with traditional studio shoots. Staying true to your brand's identity, we turn all your dream concepts into reality.",
+    aboutVal1TitleTr: "Hız & Verimlilik",
+    aboutVal1TitleEn: "Speed & Efficiency",
+    aboutVal1DescTr: "Çekim günleri ve hazırlık haftalarını birkaç güne indiriyoruz.",
+    aboutVal1DescEn: "We reduce shooting days and preparation weeks into just a few days.",
+    aboutVal2TitleTr: "Yenilikçilik",
+    aboutVal2TitleEn: "Innovation",
+    aboutVal2DescTr: "Yapay zekâ teknolojilerini estetik moda tasarımıyla entegre ediyoruz.",
+    aboutVal2DescEn: "We integrate AI technologies with high-end fashion design aesthetics.",
+    aboutVal3TitleTr: "Erişilebilirlik",
+    aboutVal3TitleEn: "Accessibility",
+    aboutVal3DescTr: "Büyük bütçeli prodüksiyonları her ölçekteki marka için ulaşılabilir kılıyoruz.",
+    aboutVal3DescEn: "We make high-budget productions accessible for brands of all sizes.",
+    contactTitleTr: "İletişime Geçin",
+    contactTitleEn: "Get in Touch",
+    contactSubtitleTr: "Kreatif vizyonunuzu konuşalım, markanız için en uygun görsel dünyayı birlikte kurgulayalım.",
+    contactSubtitleEn: "Let's talk about your creative vision, and design the best visual world for your brand together.",
+    contactInfoTitleTr: "İletişim Bilgileri",
+    contactInfoTitleEn: "Contact Information",
+    contactInfoTextTr: "Sorularınız veya iş birlikleri için bize e-posta gönderebilir ya da doğrudan WhatsApp üzerinden ulaşabilirsiniz.",
+    contactInfoTextEn: "For your questions or collaborations, you can email us or reach us directly via WhatsApp.",
+    contactFormTitleTr: "Bize Mesaj Gönderin",
+    contactFormTitleEn: "Send Us a Message",
+    contactWorkingHoursTitleTr: "Çalışma Saatleri",
+    contactWorkingHoursTitleEn: "Working Hours",
+    contactWorkingHoursValTr: "Hafta içi 09.00 - 18.00",
+    contactWorkingHoursValEn: "Weekdays 09:00 - 18:00",
+    footerSloganTr: "Görsel prodüksiyonun yapay zekâ ile yeniden tanımlanması.",
+    footerSloganEn: "Redefining visual production with artificial intelligence."
   };
 
   const defaultServices: ServiceItem[] = [
