@@ -1161,7 +1161,7 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
                 <div className="border-t border-line/40 pt-6 space-y-6">
                   <h3 className="text-sm font-semibold uppercase tracking-wider text-stone">Ana Sayfa İstatistik Sayacı</h3>
                   
-                  {[1, 2, 3].map((statNum) => {
+                  {[1, 3].map((statNum) => {
                     const numKey = `stat${statNum}Num` as keyof GlobalSettings;
                     const labelTrKey = `stat${statNum}LabelTr` as keyof GlobalSettings;
                     const labelEnKey = `stat${statNum}LabelEn` as keyof GlobalSettings;

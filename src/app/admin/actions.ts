@@ -47,5 +47,6 @@ export async function persistStore(store: Store) {
   
   // Revalidate cache to update all statically generated pages
   revalidatePath("/", "layout");
+  revalidatePath("/[locale]", "layout");
   return { success: true };
 }

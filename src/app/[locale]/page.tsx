@@ -42,10 +42,6 @@ export default async function HomePage({ params }: PageProps) {
       label: locale === "tr" ? (settings.stat1LabelTr || "Daha Hızlı Prodüksiyon") : (settings.stat1LabelEn || "Faster Production")
     },
     {
-      num: settings.stat2Num || "50+",
-      label: locale === "tr" ? (settings.stat2LabelTr || "Mutlu Marka") : (settings.stat2LabelEn || "Happy Brands")
-    },
-    {
       num: settings.stat3Num || "10K+",
       label: locale === "tr" ? (settings.stat3LabelTr || "Üretilen Görsel & Video") : (settings.stat3LabelEn || "Generated Media")
     }
@@ -148,7 +144,7 @@ export default async function HomePage({ params }: PageProps) {
 
           {/* Secondary stats section - smaller and editorial at the bottom of hero */}
           <Reveal delay={0.4} className="w-full border-t border-cream/20 pt-10">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {statsList.map((stat, i) => (
                 <div key={i} className="flex flex-col space-y-2 border-l border-cream/15 pl-6 first:border-0 first:pl-0">
                   <span className="font-display text-3xl font-light text-cream">{stat.num}</span>
