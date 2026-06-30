@@ -582,8 +582,12 @@ export default function AdminEditor({ initialStore }: AdminEditorProps) {
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      await persistStore(store);
-      setToast({ message: "Değişiklikler başarıyla kaydedildi.", type: "success" });
+      const res = await persistStore(store);
+      if (res && res.error) {
+        setToast({ message: res.error, type: "error" });
+      } else {
+        setToast({ message: "Değişiklikler başarıyla kaydedildi.", type: "success" });
+      }
     } catch (err: any) {
       setToast({ message: err.message || "Kaydetme hatası.", type: "error" });
     } finally {

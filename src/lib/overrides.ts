@@ -360,6 +360,7 @@ export async function getStore(): Promise<Store> {
 export async function saveStore(store: Store): Promise<void> {
   const kvUrl = process.env.KV_REST_API_URL;
   const kvToken = process.env.KV_REST_API_TOKEN;
+  const isVercel = !!process.env.VERCEL;
 
   const normalized = normalize(store);
 
@@ -374,12 +375,26 @@ export async function saveStore(store: Store): Promise<void> {
         body: JSON.stringify(normalized),
       });
       if (res.ok) return;
-    } catch (err) {
-      console.error("KV store write error, falling back:", err);
+
+      const errorText = await res.text();
+      const errorMsg = `KV veritabanı yazma hatası (HTTP ${res.status}): ${errorText}`;
+      console.error(errorMsg);
+      if (isVercel) {
+        throw new Error(errorMsg);
+      }
+    } catch (err: any) {
+      console.error("KV store write error:", err);
+      if (isVercel) {
+        throw new Error(`KV veritabanı yazma işlemi başarısız oldu: ${err.message || err}`);
+      }
+    }
+  } else {
+    if (isVercel) {
+      throw new Error("KV veritabanı bağlantı bilgileri (KV_REST_API_URL ve KV_REST_API_TOKEN) Vercel üzerinde tanımlı değil! Canlı panel için Upstash KV gereklidir.");
     }
   }
 
-  // Write to local file
+  // Write to local file (only when running locally)
   await fs.writeFile(STORE_FILE, JSON.stringify(normalized, null, 2), "utf-8");
 }
 

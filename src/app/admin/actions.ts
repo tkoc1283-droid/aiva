@@ -38,15 +38,20 @@ export async function logout() {
 }
 
 export async function persistStore(store: Store) {
-  const authenticated = await isAuthed();
-  if (!authenticated) {
-    throw new Error("Unauthorized access to modify store config.");
-  }
+  try {
+    const authenticated = await isAuthed();
+    if (!authenticated) {
+      return { error: "Yetkisiz erişim. Lütfen panel şifresini girip tekrar giriş yapın." };
+    }
 
-  await saveStore(store);
-  
-  // Revalidate cache to update all statically generated pages
-  revalidatePath("/", "layout");
-  revalidatePath("/[locale]", "layout");
-  return { success: true };
+    await saveStore(store);
+    
+    // Revalidate cache to update all statically generated pages
+    revalidatePath("/", "layout");
+    revalidatePath("/[locale]", "layout");
+    return { success: true };
+  } catch (err: any) {
+    console.error("persistStore error:", err);
+    return { error: err.message || "Bilinmeyen bir hata oluştu." };
+  }
 }
